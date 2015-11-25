@@ -1,0 +1,9 @@
+{
+	"deploy":"deploy",
+	"database": {
+			"host":"localhost",
+			"username":"root",
+			"password":"root",
+			"name":"stages-bingo"
+		}
+}
