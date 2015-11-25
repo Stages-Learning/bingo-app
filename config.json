@@ -1,4 +1,5 @@
 {
+	"staging":"staging",
 	"deploy":"deploy",
 	"database": {
 			"host":"localhost",

@@ -1,0 +1,34 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+            "name":"Stages Bingo Creator",
+            "folder_exclude_patterns": ["node_modules","staging","deploy"],
+            "file_exclude_patterns": ["*.sublime-workspace"]
+		}
+	],
+    "build_systems":
+    [
+            {
+                    "cmd":
+                    [
+                            "grunt",
+                            "dev",
+                            "--no-color"
+                    ],
+                    "name": "Bingo: Grunt Dev"
+            },
+            {
+                    "cmd":
+                    [
+                            "grunt",
+                            "deploy",
+                            "--no-color"
+                    ],
+                    "name": "Bingo: Grunt Deploy"
+            }
+            
+
+    ]
+}
