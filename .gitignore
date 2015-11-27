@@ -2,3 +2,5 @@ deploy
 node_modules
 my.config.json
 *.sublime-workspace
+staging
+
