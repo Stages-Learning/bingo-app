@@ -1,0 +1,44 @@
+section#board-selection
+{
+	img.hero {
+		display: block;
+		width: 100%;
+	}
+
+	div#grid-selection
+	{
+		width: 340px;
+		height: 340px;
+		.box-sizing();
+		button
+		{
+			background-color: white;
+			width: 60px;
+			height: 60px;
+			border:solid 1px rgba(128,128,128,0);
+			display: block;
+			float: left;
+			margin: 4px;
+			.box-sizing();
+			.transition(0.5s);
+			cursor: pointer;
+
+			&.hovered
+			{
+				border:solid 1px rgba(128,128,128,1);
+				.transition(0.5s);
+			}
+
+			&.selected
+			{
+				background-color: #eeffee;
+				.transition(0.5s);
+			}
+
+		}
+		button:nth-child(5n+1)
+		{
+			clear: left;
+		}
+	}
+}

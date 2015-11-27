@@ -1,0 +1,32 @@
+<header><h1>Select a Category</h1></header>
+<form class="selection-container" ng-submit="selectCategory()">
+	<div class="formrow">
+		<input id="animals" type="radio" value="animals" name="category" ng-model="currentCategory">
+		<label for="animals">
+			<span class="label">Animals</span>
+			<img src="images/placeholder.jpg" alt="alt text here">
+		</label>
+	</div>
+	<div class="formrow">
+		<input id="foods" type="radio" value="foods" name="category" ng-model="currentCategory">
+		<label for="foods">
+			<span class="label">Foods</span>
+			<img src="images/placeholder.jpg" alt="alt text here">
+		</label>
+	</div>
+	<div class="formrow">
+		<input id="transportation" type="radio" value="transportation" name="category" ng-model="currentCategory">
+		<label for="transportation">
+			<span class="label">Transportation</span>
+			<img src="images/placeholder.jpg" alt="alt text here">
+		</label>
+	</div>
+	<div class="formrow">
+		<input id="everyday-objects" type="radio" value="everyday-objects" name="category" ng-model="currentCategory">
+		<label for="everyday-objects">
+			<span class="label">Everyday Objects</span>
+			<img src="images/placeholder.jpg" alt="alt text here">
+		</label>
+	</div>
+	<input type="submit" value="Select">
+</form>

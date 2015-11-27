@@ -1,0 +1,59 @@
+section#category-selection
+{
+	form
+	{
+		.box-sizing();
+		list-style:none;
+		div.formrow
+		{
+			.box-sizing();
+			width: 40%;
+			float: left;
+			
+
+			input[type="radio"]
+			{
+				position: absolute;
+				left: -9999px;
+
+				&:checked + label
+				{
+					border-color:blue;
+				}
+			}
+			label
+			{
+				padding: 10px;
+				margin-right: 5%;
+				margin-top: 20px;
+				cursor: pointer;
+				border: solid 1px black;
+				display: block;
+			}
+			span.label
+			{
+				display: block;
+				font-size: 18px;
+				font-weight: 700;
+			}
+
+			&.selected 
+			{
+				border: solid 1px blue;
+				background-color: white;
+			}
+		}
+
+		input[type="submit"]
+		{
+			position: relative;
+			display: block;
+			clear: both;
+			width: 150px;
+			height: 40px;
+			font-size: 24px;
+			margin:0px auto;
+			top: 20px;
+		}
+	}
+}

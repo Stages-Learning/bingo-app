@@ -1,1 +1,46 @@
-p {color: red;}
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic,800,800italic,300,300italic);
+@import "mixins.less";
+body 
+{
+	font-family: 'Open Sans', sans-serif;
+	background-color: #eee;
+	padding: 0px;
+	margin: 0px;
+	overflow-x: hidden;
+
+	div#app-container
+	{
+
+		max-width: 960px;
+		background-color: white;
+		.box-sizing();
+		margin:0px;
+		.opacity(0);
+
+		&.render {
+			.opacity(1);
+			.transition(0.5s);
+		}
+
+		section.page 
+		{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			padding: 40px;
+			.box-sizing();
+
+			.translate3d(100%,0,0);
+			&.center {.translate3d(0,0,0); .transition(0.5s); .opacity(1);}
+			&.left {.translate3d(-100%,0,0); .transition(0.5s); .opacity(0);}
+			&.right {.translate3d(100%,0,0); .transition(0.5s); .opacity(0);}
+		}
+
+
+		@import "landing.less";
+		@import "category-selection.less";
+		@import "board-selection.less";
+	}
+}
+
