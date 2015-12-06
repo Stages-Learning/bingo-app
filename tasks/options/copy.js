@@ -5,7 +5,7 @@ module.exports = {
       {expand: true, cwd:'src/html', src: ["**/*"], dest: "<%= local.staging %>"},
       {expand: true, cwd:'src/views', src: ["**/*"], dest: "<%= local.staging %>/views"},
       {expand: true, cwd:'src/server', src: ["**/*","!config/*.php"], dest: "<%= local.staging %>/php"},
-      {expand: true, cwd:'assets/images', src: ["**/*"], dest: "<%= local.staging %>/images"},
+      {expand: true, cwd:'assets/images', src: ["**/*"], dest: "<%= local.staging %>/app-images"},
       {expand: true, cwd:'src/js', src: ["**/*"], dest: "<%= local.staging %>/js"}
     ]
   },

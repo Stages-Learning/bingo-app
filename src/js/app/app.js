@@ -1,6 +1,8 @@
 var bingo = (function(self){
 
-	angular.module('bingo', []);
+	angular.module('bingo', []).config(function($sceProvider){
+		$sceProvider.enabled(false);
+	});
 
 	  angular.trace = function (){
 	    for(var i = 0, count = arguments.length; i < count; i++)

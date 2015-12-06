@@ -7,9 +7,6 @@ section#category-selection
 		div.formrow
 		{
 			.box-sizing();
-			width: 40%;
-			float: left;
-			
 
 			input[type="radio"]
 			{
@@ -23,19 +20,27 @@ section#category-selection
 			}
 			label
 			{
-				padding: 10px;
-				margin-right: 5%;
-				margin-top: 20px;
+				padding: 0px;
 				cursor: pointer;
 				border: solid 1px black;
 				display: block;
+				overflow: auto;
+
+				img {
+					width: 200px;
+					display: block;
+					float: left;
+				}
+				span.label
+				{
+					display: block;
+					font-size: 18px;
+					font-weight: 700;
+					float: left;
+					margin-left: 10px;
+				}
 			}
-			span.label
-			{
-				display: block;
-				font-size: 18px;
-				font-weight: 700;
-			}
+			
 
 			&.selected 
 			{

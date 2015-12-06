@@ -1,0 +1,52 @@
+section#image-selection
+{
+	form#card-count-form
+	{
+		clear: both;
+	}
+	form#image-selection-form
+	{
+		div.formrow
+		{
+
+			.box-sizing();
+			width: 25%;
+			float: left;
+			label
+			{
+				cursor: pointer;
+				img
+				{
+					display: inline-block;
+					width: 30%;
+				}
+
+				&.disabled {
+					opacity: 0.25;
+					cursor: default;
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 768px)
+	{
+		form
+		{
+			div.formrow
+			{
+				width: 33%;
+			}
+		}
+	}
+	@media screen and (max-width: 667px)
+	{
+		form
+		{
+			div.formrow
+			{
+				width: 50%;
+			}
+		}
+	}
+}

@@ -6,6 +6,7 @@
 		<section id="landing-page" ng-class="['page',getPagePosition(0)]" landing-view></section>
 		<section id="category-selection" ng-class="['page',getPagePosition(1)]" category-selection></section>
 		<section id="board-selection" ng-class="['page',getPagePosition(2)]" board-selection></section>
+		<section id="image-selection" ng-class="['page',getPagePosition(3)]" image-selection></section>
 	</div>
 	<script type="text/javascript" src="js/vendor/angular.min.js"></script>
 	<script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
@@ -15,7 +16,10 @@
 	<script type="text/javascript" src="js/app/directives/LandingViewDirective.js"></script>
 	<script type="text/javascript" src="js/app/directives/CategorySelectionDirective.js"></script>
 	<script type="text/javascript" src="js/app/directives/BoardSelectionDirective.js"></script>
+	<script type="text/javascript" src="js/app/directives/ImageSelectionDirective.js"></script>
 	<script type="text/javascript" src="js/app/filters/TechLanguageFilter.js"></script>
+	<script type="text/javascript" src="js/app/filters/PackFilter.js"></script>
+	<script type="text/javascript" src="js/app/filters/LabelFilter.js"></script>
 	<script type="text/javascript" src="js/app/services/DBService.js"></script>
 	<script type="text/javascript" src="js/app/services/ImageService.js"></script>
 </html>

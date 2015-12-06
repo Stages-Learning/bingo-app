@@ -1,0 +1,25 @@
+<header>
+	<img class="hero" src="app-images/hero-placeholder.jpg">
+	<h2>Step 2: Select Number of Pictures</h2>
+</header>
+<form id="card-count-form">
+	<div class="formrow">
+		<label for="number-selection">I would like to print </label>
+		<select id="number-selection" ng-model="numCards" ng-change="updateMax()">
+			<option value="{{$index}}" ng-repeat="option in countOptions" ng-bind-html="$index" ng-selected="{{$index==1}}"></option>
+		</select>
+		<span>bingo cards</span>
+	</div>
+</form>
+<h3 ng-if="(selectedMax - selectedCount) > 0" ng-bind-html="'Select ' + (selectedMax - selectedCount) + ' ' + (selectedCount > 0 ? 'more ':'')  + 'card'+(selectedMax - selectedCount == 1 ? '':'s')+' to complete your game'"></h3>
+<button ng-if="selectedMax - selectedCount == 0">Generate Bingo Cards!</button>
+<form id="image-selection-form">
+	<div class="formrow" ng-repeat="image in listing|pack:currentConfiguration.pack">
+		<input id="image-{{image.id}}" type="checkbox" ng-model="selectedImages['image-'+image.id]" ng-change="updateImageList()" value="{{image.id}}" name="image-selection" ng-disabled="selectedCount >= selectedMax &amp;&amp; !image.selected">
+		<label ng-class="selectedCount >= selectedMax &amp;&amp; !image.selected ? 'disabled':''" for="image-{{image.id}}">
+			<img ng-src="{{image.path}}" alt="{{image.label}}">
+			<span class="label" ng-bind-html="image.label|label"></span>
+		</label>
+	</div>
+</form>
+<button ng-if="selectedMax - selectedCount == 0">Generate Bingo Cards!</button>

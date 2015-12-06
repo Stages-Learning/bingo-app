@@ -10,6 +10,7 @@ section#board-selection
 		width: 340px;
 		height: 340px;
 		.box-sizing();
+		float: left;
 		button
 		{
 			background-color: white;
@@ -39,6 +40,124 @@ section#board-selection
 		button:nth-child(5n+1)
 		{
 			clear: left;
+		}
+	}
+	div#sample-card
+	{
+		padding-top: 4px;
+		width: 219px;
+		.box-sizing();
+		float: left;
+		position: relative;
+
+		img {display: block; width: 100%;}
+
+		div.sample-grid
+		{
+			.box-sizing();
+			position: absolute;
+			top: 90px;
+			left: 10px;
+			width: 198px;
+			height: 217px;
+			padding-top: 4px;
+			padding-left: 0px;
+
+			span.block
+			{
+				display: block; float: left;
+				background-color: #f6d670; //246 214 112
+				padding: 0px;
+
+				img {
+					display: block;
+					margin: 0px auto;
+					position: relative;
+					width: 80%;
+					top: 50%;
+				}
+			}
+			
+			&.cols-5 span.block
+			{
+				width: 35px;
+				margin-left: 3px;
+			}
+			&.rows-5 span.block
+			{
+				height: 38px;
+				margin-bottom: 4px;
+			}
+			&.cols-4 span.block
+			{
+				width: 46px;
+				margin-left: 2px;
+			}
+			&.rows-4 span.block
+			{
+				height: 49px;
+				margin-bottom: 3px
+			}
+			&.cols-3 span.block
+			{
+				width: 62px;
+				margin-left: 2px;
+			}
+			&.rows-3 span.block
+			{
+				height: 67px;
+				margin-bottom: 3px;
+			}
+			&.cols-2 span.block
+			{
+				width: 92px;
+				margin-left: 3px;
+			}
+			&.rows-2 span.block
+			{
+				height: 101px;
+				margin-bottom: 3px;
+			}
+			&.cols-1 span.block
+			{
+				width: 188px;
+				margin-left: 3px;
+			}
+			&.rows-1 span.block
+			{
+				height: 204px;
+				margin-bottom: 3px;
+			}
+
+			&.cols-1.rows-2 span.block img
+			{
+				width: 60%;
+			}
+
+			&.cols-2.rows-5 span.block img,
+			&.cols-1.rows-3 span.block img
+			{
+				width: 40%;
+			}
+			&.cols-1.rows-5 span.block img
+			{
+				width: 20%;
+			}
+			&.cols-2.rows-4 span.block img
+			{
+				width: 50%;
+			}
+			&.cols-1.rows-4 span.block img
+			{
+				width: 30%;
+			}
+			&.cols-3.rows-5 span.block img
+			{
+				width: 70%;
+			}
+
+			border: solid 2px rgba(162,170,66,1) ;//#a2aa42; //162 170 66
+			background-color: #cd232f;
 		}
 	}
 }

@@ -1,10 +1,17 @@
 <header>
-	<img class="hero" src="images/hero-placeholder.jpg">
-	<h2>Step 2: Select Number of Pictures</h2>
+	<img class="hero" src="app-images/hero-placeholder.jpg">
+	<h2>Step 3: Select Images</h2>
 </header>
 <div id="grid-selection">
-	<button ng-init="column=1+(i-1)%5;row=1+Math.floor((i-1)/5);" ng-click="selectCardSize(row,column)" ng-class="['cell','column-'+column,'row-'+row]" data-column="{{column}}" data-row="{{row}}" ng-repeat="i in grid">
+	<button ng-init="column=1+(i-1)%5;row=1+Math.floor((i-1)/5);" ng-click="selectCardSize(row,column); setSampleGrid(row,column)" ng-class="['cell','column-'+column,'row-'+row]" data-column="{{column}}" data-row="{{row}}" ng-repeat="i in grid">
 </div>
 <div id="sample-card">
-	
+	<img class="sample-card-bg" ng-src="{{'app-images/foods-card.jpg'}}">
+	<div class="sample-grid" ng-class="['cols-'+currentConfiguration.cols,'rows-'+currentConfiguration.rows]">
+		<span class="block" ng-repeat="item in sampleGrid">
+			<img ng-class="['card-'+$index]" ng-src="{{randomImages[$index].path}}" />
+		</span>
+	</div>
 </div>
+<button ng-click="selectCard()" ng-disabled="currentConfiguration.cols == 0">Select Pictures</button>
+<style ng-bind-html="scatterCSS"></style>
