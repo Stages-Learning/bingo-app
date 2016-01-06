@@ -36,7 +36,7 @@
 			<img ng-src="{{image.path}}" alt="{{image.label}}">
 			<span ng-if="labelManagement == 'auto'" class="label" ng-bind-html="image.originalLabel"></span>
 		</label>
-		<input type="text" ng-if="labelManagement == 'custom'" ng-model="image.label" ng-disabled="selectedCount >= selectedMax &amp;&amp; !image.selected" />
+		<input id="label-input-{{$index}}" type="text" ng-if="labelManagement == 'custom'" ng-model="image.label" ng-disabled="selectedCount >= selectedMax &amp;&amp; !image.selected" ng-keyup="onEnter($event,$index);" />
 	</div>
 </form>
 <nav>

@@ -12,11 +12,11 @@
         	$scope.countOptions.push({name:i,value:i});
         }
 
-        $scope.preventClickDefault = function(event)
+        $scope.onEnter = function(e,index)
         {
-          event.preventDefault();
-          event.stopImmediatePropagation();
-        }
+          if(e.keyCode !== 13) return;
+          e.target.blur();
+        };
       }  
     };
   });
