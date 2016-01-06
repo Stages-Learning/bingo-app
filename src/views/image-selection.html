@@ -34,14 +34,14 @@
 		<input id="image-{{image.id}}" type="checkbox" ng-model="selectedImages['image-'+image.id]" ng-change="updateImageList()" value="{{image.id}}" name="image-selection" ng-disabled="selectedCount >= selectedMax &amp;&amp; !image.selected">
 		<label ng-class="selectedCount >= selectedMax &amp;&amp; !image.selected ? 'disabled':''" for="image-{{image.id}}">
 			<img ng-src="{{image.path}}" alt="{{image.label}}">
-			<span ng-if="labelManagement == 'auto'" class="label" ng-bind-html="image.label"></span>
+			<span ng-if="labelManagement == 'auto'" class="label" ng-bind-html="image.originalLabel"></span>
 		</label>
 		<input type="text" ng-if="labelManagement == 'custom'" ng-model="image.label" ng-disabled="selectedCount >= selectedMax &amp;&amp; !image.selected" />
 	</div>
 </form>
 <nav>
 	<ul>
-		<li><button class="previous" ng-click="setCurrentPage(1)"><span>Back</span></button></li>
+		<li><button class="previous" ng-click="setCurrentPage(2)"><span>Back</span></button></li>
 		<li><button class="next" ng-click="setCurrentPage(4)" ng-disabled="selectedMax - selectedCount > 0"><span>Next</span></button></li>
 	</ul>
 </nav>
