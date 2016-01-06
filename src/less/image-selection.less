@@ -42,6 +42,11 @@ section#image-selection
 				font-size: 16px;
 				font-family: 'Open Sans', sans-serif;
 				border: solid 1px #eee;
+
+				&:focus {
+					outline: none;
+					border:solid 1px @accent;
+				}
 			}
 			label
 			{
@@ -77,6 +82,10 @@ section#image-selection
 				left: 10%;
 				border: solid 1px #ccc;
 				background: url(../app-images/checkmark.jpg) no-repeat;
+			}
+			input[type="checkbox"]:focus + label img
+			{
+				border: solid 1px @accent;
 			}
 		}
 	}
