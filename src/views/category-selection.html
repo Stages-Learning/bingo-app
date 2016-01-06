@@ -1,11 +1,13 @@
-<header><h1>Select a Category</h1></header>
-<form class="selection-container" ng-submit="selectCategory()">
+<header>
+	<img class="hero" src="app-images/hero.jpg" alt="alt text here">
+	<h1><span class="step">Step 1:</span> Select a Category</h1>
+</header>
+<form class="selection-container">
 	<div class="formrow" ng-repeat="pack in packs">
-		<input id="pack-{{pack.id}}" type="radio" value="{{pack.pack}}" name="category" ng-model="currentConfiguration.pack">
+		<input id="pack-{{pack.id}}" type="radio" value="{{pack.pack}}" name="category" ng-click="selectCategory()" ng-model="currentConfiguration.pack">
 		<label for="pack-{{pack.id}}">
-			<img ng-src="{{pack.path}}" alt="{{pack.label}}">
 			<span class="label" ng-bind-html="pack.pack"></span>
+			<img ng-src="{{pack.path}}" alt="{{pack.label}}">
 		</label>
 	</div>
-	<input type="submit" value="Select" ng-disabled="currentConfiguration.pack == null">
 </form>

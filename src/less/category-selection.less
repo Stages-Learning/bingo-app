@@ -7,6 +7,7 @@ section#category-selection
 		div.formrow
 		{
 			.box-sizing();
+			margin-top: 40px;
 
 			input[type="radio"]
 			{
@@ -22,22 +23,34 @@ section#category-selection
 			{
 				padding: 0px;
 				cursor: pointer;
-				border: solid 1px black;
-				display: block;
-				overflow: auto;
+				overflow: visible;
+				font-size: 40px;
+				width: 60%;
+				margin: 0px 20%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
 
 				img {
-					width: 200px;
 					display: block;
 					float: left;
+					width: 40%;
+					margin-right: 0%;
+					border: solid 1px #ddd;
+					.box-sizing();
+					.rotation(3deg);
+					.drop-shadow(2px, 4px, 4px, 0.1); 
 				}
 				span.label
 				{
 					display: block;
-					font-size: 18px;
-					font-weight: 700;
+					font-size: 30px;
+					color: @accent;
 					float: left;
-					margin-left: 10px;
+					text-align: right;
+					width: 40%;
+					margin-right: 10%;
+					.box-sizing();
 				}
 			}
 			

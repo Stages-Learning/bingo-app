@@ -1,19 +1,23 @@
 section#landing-page
 {
-	padding: 40px;
-	header h1 {margin-top:0px; padding: 0px;}
+	header h1 {margin-top:30px; margin-bottom: 0px; padding: 0px; color: @accent; font-size: 40px; line-height: 40px; font-weight: 400; text-align: center;}
 	ul
 	{
+		text-align: center;
+		width: 75%;
 		.box-sizing();
 		list-style: none;
-		margin: 0px;
+		margin: 20px auto;
 		padding: 0px;
 		li
 		{
 			.box-sizing();
-			width: 25%;
+			width: 33%;
 			float: left;
 			padding: 5px;
+			color: @accent;
+			font-weight: 700;
+			font-size: 20px;
 
 			img {
 				display: block;
@@ -21,7 +25,12 @@ section#landing-page
 			}
 		}
 	}
-	ul+p {clear: both; padding-top: 20px;}
+	ul+p {clear: both; padding-top: 20px; font-size: 20px; color: @text;  text-align: center;
+			span.highlight {
+				font-size: 30px;
+				font-weight: 700;
+			}
+	}
 
 	ol
 	{
@@ -30,11 +39,20 @@ section#landing-page
 
 	button
 	{
+		width: 380px;
+		height: 262px;
 		display: block;
-		width: 150px;
-		height: 40px;
+		margin: 30px auto;
 		font-size: 24px;
-		margin: 0px auto;
+		border: none;
+		padding: 0px;
+		background-color: white;
+		cursor: pointer;
+		img 
+		{
+			width: 380px;
+			height: 262px;
+		}
 	}
 
 }

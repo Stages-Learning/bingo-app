@@ -1,39 +1,98 @@
 section#board-selection
 {
-	img.hero {
-		display: block;
-		width: 100%;
-	}
-
 	div#grid-selection
 	{
-		width: 340px;
-		height: 340px;
+		width: 322px;
+		height: 322px;
 		.box-sizing();
-		float: left;
+		position: relative;
+		z-index: 2;
+		margin: 30px auto 40px auto;
+
+		&:before
+		{
+			content: "";
+			display: block;
+			position: absolute;
+			width: 360px;
+			height: 360px;
+			top: -20px;
+			left: -20px;
+			z-index: 1;
+			.gradient(@bingoTop, @bingoBottom, @bingoTop);
+
+		}
+		&:after 
+		{
+			content: "";
+			display: block;
+			position: absolute;
+			top: -10px;
+			left: -10px;
+			width: 316px;
+			height: 316px;
+			background-color: @bingoSquareBackground;
+			z-index: 2;
+			border: solid 10px @bingoInnerBorder;
+			.drop-shadow(2px, 2px, 2px, 0.25);
+		}
+		
+
 		button
 		{
-			background-color: white;
+			background-color: @bingoSquare;
 			width: 60px;
 			height: 60px;
 			border:solid 1px rgba(128,128,128,0);
 			display: block;
 			float: left;
-			margin: 4px;
+			margin: 0px 4px 4px 0px;
 			.box-sizing();
 			.transition(0.5s);
 			cursor: pointer;
+			position: relative;
+			z-index: 5;
+			
+			.drop-shadow(2px, 2px, 2px, 0.5);
+			&:nth-child(n+20) {
+				.drop-shadow(2px, 0px, 0px, 0.5);
+			}
+			&:nth-child(5n+5) {
+				.drop-shadow(0px, 2px, 0px, 0.5);
+			}
+			&:nth-child(25)
+			{
+				.drop-shadow(0px, 2px, 0px, 0);
+			}
+
+			&:after 
+			{
+				opacity: 0;
+				content: "";
+				display: block;
+				background: url(../app-images/bingo-x.jpg) no-repeat;
+				width: 42px;
+				height: 48px;
+				.transition(0.5s);
+			}
+			
 
 			&.hovered
 			{
-				border:solid 1px rgba(128,128,128,1);
-				.transition(0.5s);
+				&:after 
+				{
+					opacity: 0.25;
+					.transition(0.5s);
+				}
 			}
 
 			&.selected
 			{
-				background-color: #eeffee;
-				.transition(0.5s);
+				&:after 
+				{
+					opacity: 1;
+					.transition(0.5s);
+				}
 			}
 
 		}
@@ -42,12 +101,20 @@ section#board-selection
 			clear: left;
 		}
 	}
+
+	& > p 
+	{
+		font-size: 20px;
+		margin-bottom: 0px;
+		text-align: center;
+		color: @text;
+	}
 	div#sample-card
 	{
 		padding-top: 4px;
-		width: 219px;
+		width: 360px;
+		margin: 10px auto 20px auto;
 		.box-sizing();
-		float: left;
 		position: relative;
 
 		img {display: block; width: 100%;}
@@ -56,12 +123,12 @@ section#board-selection
 		{
 			.box-sizing();
 			position: absolute;
-			top: 90px;
-			left: 10px;
-			width: 198px;
-			height: 217px;
 			padding-top: 4px;
 			padding-left: 0px;
+			top: 147px;
+			left: 15px;
+			width: 327px;
+			height: 354px;
 
 			span.block
 			{
@@ -80,52 +147,52 @@ section#board-selection
 			
 			&.cols-5 span.block
 			{
-				width: 35px;
+				width: 60px;
 				margin-left: 3px;
 			}
 			&.rows-5 span.block
 			{
-				height: 38px;
+				height: 64px;
 				margin-bottom: 4px;
 			}
 			&.cols-4 span.block
 			{
-				width: 46px;
-				margin-left: 2px;
+				width: 75px;
+				margin-left: 3px
 			}
 			&.rows-4 span.block
 			{
-				height: 49px;
+				height: 82px;
 				margin-bottom: 3px
 			}
 			&.cols-3 span.block
 			{
-				width: 62px;
-				margin-left: 2px;
+				width: 102px;
+				margin-left: 3px
 			}
 			&.rows-3 span.block
 			{
-				height: 67px;
+				height: 110px;
 				margin-bottom: 3px;
 			}
 			&.cols-2 span.block
 			{
-				width: 92px;
+				width: 154px;
 				margin-left: 3px;
 			}
 			&.rows-2 span.block
 			{
-				height: 101px;
+				height: 167px;
 				margin-bottom: 3px;
 			}
 			&.cols-1 span.block
 			{
-				width: 188px;
+				width: 311px;
 				margin-left: 3px;
 			}
 			&.rows-1 span.block
 			{
-				height: 204px;
+				height: 337px;
 				margin-bottom: 3px;
 			}
 
@@ -156,7 +223,7 @@ section#board-selection
 				width: 70%;
 			}
 
-			border: solid 2px rgba(162,170,66,1) ;//#a2aa42; //162 170 66
+			border: solid 5px rgba(162,170,66,1) ;//#a2aa42; //162 170 66
 			background-color: #cd232f;
 		}
 	}

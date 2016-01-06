@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('bingo')
-  .controller('BingoController', function ($scope,ImageService,$timeout) {
+  .controller('BingoController', function ($scope,ImageService,$timeout,$window) {
   	var trace = angular.trace;
 
-  	$scope.currentPageIndex = 1;
+  	$scope.currentPageIndex = 0;
   	$scope.Math = window.Math;
   	$scope.appStyles = {render:false};
   	$scope.currentConfiguration = {pack:null,rows:0,cols:0};
@@ -12,11 +12,14 @@ angular.module('bingo')
   	$scope.currentCardCols = 0;
     $scope.selectedImages = {};
     $scope.selectedCount = 0;
-    $scope.selectedMax = 16;
+    $scope.selectedMax = 25;
     $scope.numCards = {};
+    $scope.labelManagement = "auto";
 
     ImageService.load().then(function(){
-        $scope.appStyles.render = true;
+        $timeout(function(){
+            $scope.appStyles.render= true;
+        },500);
         $scope.packs = ImageService.packs();
         $scope.listing = ImageService.listing();
         $scope.lookup = ImageService.lookup();
@@ -29,23 +32,23 @@ angular.module('bingo')
     };
     $scope.setCurrentPage = function(index)
     {
+      $window.scrollTo(0, 0);
     	$scope.currentPageIndex = index;
     };
 
     $scope.selectCategory = function()
     {
-    	$scope.currentPageIndex = 2;
+      $scope.setCurrentPage(2);
     };
     $scope.selectCard = function()
     {
-      $scope.currentPageIndex = 3;
+      $scope.setCurrentPage(3);
     };
 
     $scope.selectCardSize = function(rows,cols)
     {
     	$scope.currentConfiguration.rows = rows;
     	$scope.currentConfiguration.cols = cols;
-      trace($scope.currentConfiguration);
     };
 
     $scope.updateImageList = function()
@@ -64,26 +67,60 @@ angular.module('bingo')
     $scope.updateMax = function()
     {
       var numCards = parseInt($scope.numCards);
-      if(numCards === 1) $scope.selectedMax = 16;
-      else if(numCards === 2) $scope.selectedMax = 24;
-      else $scope.selectedMax = 32;
+      if(numCards === 1) $scope.selectedMax = 25;
+      else if(numCards === 2) $scope.selectedMax = 30;
+      else $scope.selectedMax = 36;
 
       deselect();
     };
 
-    function deselect()
+    $scope.selectRandomImages = function()
     {
-      if($scope.selectedMax >= $scope.selectedCount) return;
+      deselect(true);
+
+      var images = $scope.listing.concat();
+      images.sort(shuffle);
+      images = images.slice(0,$scope.selectedMax);
+
+      for(var i = 0, count = images.length; i < count; i++)
+      {
+        var image = images[i];
+        image.selected = true;
+        $scope.selectedImages["image-"+image.id] = true;
+      }
+
+      $scope.selectedCount = $scope.selectedMax;
+    };
+
+    $scope.clearSelections = function()
+    {
+      deselect(true);
+    };
+
+    $scope.generatePDF = function(){
+      return xepOnline.Formatter.Format('generation',{render:'download'});
+    };
+
+    function shuffle(a,b)
+    {
+      return Math.random() > 0.5 ? 1 : -1;
+    }
+
+    function deselect(all)
+    {
+
+      if($scope.selectedMax >= $scope.selectedCount && !all) return;
 
       for(var i = $scope.listing.length - 1; i >= 0; i--)
       {
         var image = $scope.listing[i];
+        image.label = image.originalLabel;
         if(image.selected)
         {
           image.selected = false;
           $scope.selectedCount --;
           $scope.selectedImages["image-"+image.id] = false;
-          deselect();
+          deselect(all);
           break;
         }
       }

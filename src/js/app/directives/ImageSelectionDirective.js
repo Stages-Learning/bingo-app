@@ -11,6 +11,12 @@
         {
         	$scope.countOptions.push({name:i,value:i});
         }
+
+        $scope.preventClickDefault = function(event)
+        {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
       }  
     };
   });

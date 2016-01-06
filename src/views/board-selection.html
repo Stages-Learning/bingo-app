@@ -1,10 +1,12 @@
 <header>
-	<img class="hero" src="app-images/hero-placeholder.jpg">
-	<h2>Step 3: Select Images</h2>
+	<img class="hero" src="app-images/hero.jpg" alt="alt text here">
+	<h1><span class="step">Step 3:</span> Select Number of Pictures</h1>
+	<p>Select # of Rows and Columns</p>
 </header>
 <div id="grid-selection">
 	<button ng-init="column=1+(i-1)%5;row=1+Math.floor((i-1)/5);" ng-click="selectCardSize(row,column); setSampleGrid(row,column)" ng-class="['cell','column-'+column,'row-'+row]" data-column="{{column}}" data-row="{{row}}" ng-repeat="i in grid">
 </div>
+<p>This is what your card will look like.</p>
 <div id="sample-card">
 	<img class="sample-card-bg" ng-src="{{'app-images/foods-card.jpg'}}">
 	<div class="sample-grid" ng-class="['cols-'+currentConfiguration.cols,'rows-'+currentConfiguration.rows]">
@@ -13,5 +15,10 @@
 		</span>
 	</div>
 </div>
-<button ng-click="selectCard()" ng-disabled="currentConfiguration.cols == 0">Select Pictures</button>
+<nav>
+	<ul>
+		<li><button class="previous" ng-click="setCurrentPage(1)"><span>Back</span></button></li>
+		<li><button class="next" ng-click="selectCard()" ng-disabled="currentConfiguration.cols == 0"><span>Next</span></button></li>
+	</ul>
+</nav>
 <style ng-bind-html="scatterCSS"></style>

@@ -2,7 +2,11 @@ section#image-selection
 {
 	form#card-count-form
 	{
+		margin-top: 20px;
 		clear: both;
+		font-size: 20px;
+		color: @text;
+		text-align: center;
 	}
 	form#image-selection-form
 	{
@@ -12,13 +16,48 @@ section#image-selection
 			.box-sizing();
 			width: 25%;
 			float: left;
+
+			&:nth-child(n+5)
+			{
+				padding-top: 20px;
+			}
+
+			input[type="checkbox"]
+			{
+				position: absolute;
+				left: -9999px;
+				display: block;
+			}
+			input[type="text"]
+			{
+				display: block;
+				width: 80%;
+				margin-left: 10%;
+				padding:0px;
+				margin-top: 0px;
+				margin-right: 0px;
+				text-align: center;
+				color: @text;
+				font-size: 16px;
+				font-family: 'Open Sans', sans-serif;
+				border: solid 1px #eee;
+			}
 			label
 			{
 				cursor: pointer;
+				text-align: center;
+				display: block;
+				position: relative;
 				img
 				{
-					display: inline-block;
-					width: 30%;
+					display: block;
+					width: 80%;
+					margin-left: 10%;
+					border: solid 1px #ccc;
+				}
+				span.label 
+				{
+					color: @text;
 				}
 
 				&.disabled {
@@ -26,6 +65,43 @@ section#image-selection
 					cursor: default;
 				}
 			}
+			input[type="checkbox"]:checked + label:after
+			{
+				content: "";
+				display: block;
+				width: 50px;
+				height: 50px;
+				position: absolute;
+				top:0;
+				left: 10%;
+				border: solid 1px #ccc;
+				background: url(../app-images/checkmark.jpg) no-repeat;
+			}
+		}
+	}
+	h3 
+	{
+		margin-top: 20px;
+		margin-bottom: 0px;
+		text-align: center;
+		font-size: 30px;
+		font-weight: 400;
+		color: @accent;
+	}
+
+	div.button-row 
+	{
+		text-align: center;
+		margin: 10px 0px 30px;
+
+		button 
+		{
+			display: inline-block;
+			padding: 5px 10px;
+			background-color: @accent;
+			color: white;
+			border:none;
+			font-size: 14px;
 		}
 	}
 

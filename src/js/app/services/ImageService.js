@@ -20,6 +20,7 @@ angular.module('bingo').service('ImageService', function($http,$filter)
 		{
 			var card = listing[i];
 			lookup['image-'+card.id] = card;
+			card.label = card.originalLabel = $filter('label')(card.label);
 		}
 	}
 

@@ -1,6 +1,6 @@
 <header>
-	<img class="hero" src="app-images/hero-placeholder.jpg">
-	<h2>Step 2: Select Number of Pictures</h2>
+	<img class="hero" src="app-images/hero.jpg" alt="alt text here">
+	<h1><span class="step">Step 4:</span> Select your Pictures</h1>
 </header>
 <form id="card-count-form">
 	<div class="formrow">
@@ -10,16 +10,38 @@
 		</select>
 		<span>bingo cards</span>
 	</div>
+	<div class="formrow">
+		<input id="auto-labels" type="radio" name="labels" ng-model="labelManagement" value="auto" />
+		<label for="auto-labels">Include auto-generated English labels</label>
+	</div>
+	<div class="formrow">
+		<input id="custom-labels" type="radio" name="labels" ng-model="labelManagement" value="custom"  />
+		<label for="custom-labels">Generate your own picture labels</label>
+	</div>
+	<div class="formrow">
+		<input id="no-labels" type="radio" name="labels" ng-model="labelManagement" value="none"  />
+		<label for="no-labels">Do not include picture labels</label>
+	</div>
 </form>
 <h3 ng-if="(selectedMax - selectedCount) > 0" ng-bind-html="'Select ' + (selectedMax - selectedCount) + ' ' + (selectedCount > 0 ? 'more ':'')  + 'card'+(selectedMax - selectedCount == 1 ? '':'s')+' to complete your game'"></h3>
-<button ng-if="selectedMax - selectedCount == 0">Generate Bingo Cards!</button>
+<div class="button-row">
+	<button ng-click="setCurrentPage(4)" ng-if="selectedMax - selectedCount == 0">Generate Bingo Cards!</button>
+	<button ng-click="selectRandomImages()" ng-if="selectedMax - selectedCount > 0">Select Random Images</button>
+	<button ng-click="clearSelections()">Clear Selections</button>
+</div>
 <form id="image-selection-form">
 	<div class="formrow" ng-repeat="image in listing|pack:currentConfiguration.pack">
 		<input id="image-{{image.id}}" type="checkbox" ng-model="selectedImages['image-'+image.id]" ng-change="updateImageList()" value="{{image.id}}" name="image-selection" ng-disabled="selectedCount >= selectedMax &amp;&amp; !image.selected">
 		<label ng-class="selectedCount >= selectedMax &amp;&amp; !image.selected ? 'disabled':''" for="image-{{image.id}}">
 			<img ng-src="{{image.path}}" alt="{{image.label}}">
-			<span class="label" ng-bind-html="image.label|label"></span>
+			<span ng-if="labelManagement == 'auto'" class="label" ng-bind-html="image.label"></span>
 		</label>
+		<input type="text" ng-if="labelManagement == 'custom'" ng-model="image.label" ng-disabled="selectedCount >= selectedMax &amp;&amp; !image.selected" />
 	</div>
 </form>
-<button ng-if="selectedMax - selectedCount == 0">Generate Bingo Cards!</button>
+<nav>
+	<ul>
+		<li><button class="previous" ng-click="setCurrentPage(1)"><span>Back</span></button></li>
+		<li><button class="next" ng-click="setCurrentPage(4)" ng-disabled="selectedMax - selectedCount > 0"><span>Next</span></button></li>
+	</ul>
+</nav>
