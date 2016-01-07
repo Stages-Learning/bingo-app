@@ -13,7 +13,7 @@ angular.module('bingo')
     $scope.selectedImages = {};
     $scope.selectedCount = 0;
     $scope.selectedMax = 25;
-    $scope.numCards = {};
+    $scope.numCards = 1;
     $scope.labelManagement = "auto";
 
     ImageService.load().then(function(){
@@ -47,8 +47,12 @@ angular.module('bingo')
 
     $scope.selectCardSize = function(rows,cols)
     {
+      var numCards = parseInt($scope.numCards);
     	$scope.currentConfiguration.rows = rows;
     	$scope.currentConfiguration.cols = cols;
+      if(numCards === 1) $scope.selectedMax = ($scope.currentConfiguration.rows * $scope.currentConfiguration.cols);
+      else if(numCards === 2) $scope.selectedMax = Math.ceil($scope.currentConfiguration.rows * $scope.currentConfiguration.cols*1.5);
+      else $scope.selectedMax = ($scope.currentConfiguration.rows * $scope.currentConfiguration.cols*2);
     };
 
     $scope.updateImageList = function()
@@ -67,9 +71,9 @@ angular.module('bingo')
     $scope.updateMax = function()
     {
       var numCards = parseInt($scope.numCards);
-      if(numCards === 1) $scope.selectedMax = 25;
-      else if(numCards === 2) $scope.selectedMax = 30;
-      else $scope.selectedMax = 36;
+      if(numCards === 1) $scope.selectedMax = ($scope.currentConfiguration.rows * $scope.currentConfiguration.cols);
+      else if(numCards === 2) $scope.selectedMax = Math.ceil($scope.currentConfiguration.rows * $scope.currentConfiguration.cols*1.5);
+      else $scope.selectedMax = ($scope.currentConfiguration.rows * $scope.currentConfiguration.cols*2);
 
       deselect();
     };
