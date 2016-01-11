@@ -70,20 +70,20 @@
 
 		chdir("../../");
 		
-		shell_exec("mkdir .$hash");
+		shell_exec("mkdir .tmp/$hash");
 		shell_exec("mkdir -p images/users/$hash/bingo");
 		
 		for($i = 1; $i <= $count; $i++)
 		{
 			$url = "http://".$_SERVER['SERVER_NAME']."/generator.php?userhash=$hash&card=$i";
-			$output = ".$hash/bingo/bingo-card-$i.pdf";
+			$output = ".tmp/$hash/bingo/bingo-card-$i.pdf";
 			shell_exec("phantomjs php/scripts/bingo.js '$url' $output");
 		}
-		chdir(".$hash");
+		chdir(".tmp/$hash");
 		shell_exec("zip -r bingo.zip bingo");
-		shell_exec("mv bingo.zip ../images/users/$hash/bingo/bingo.zip");
-		chdir("../");
-		shell_exec("rm -rf .$hash");
+		shell_exec("mv bingo.zip ../../images/users/$hash/bingo/bingo.zip");
+		chdir("../../");
+		shell_exec("rm -rf .tmp/$hash");
 		$result->url = "images/users/$hash/bingo/bingo.zip";
 	}
 
