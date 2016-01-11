@@ -1,8 +1,9 @@
 <header>
-	<img class="hero" src="app-images/hero.jpg" alt="alt text here">
 	<h1><span class="step">Step 5:</span> Download Your Cards</h1>
 	<p>Click the button below to generate your download bundle.</p>
 </header>
 <div class="buttonrow">
-	<button ng-click="generatePDF()">Download Bingo Cards!</button>
+	<button ng-if="!downloadLink &amp;&amp; !saving" ng-click="generatePDF()">Generate Bingo Cards</button>
+	<a ng-if="downloadLink &amp;&amp; !saving" target="_blank" ng-href="{{downloadLink}}">Download Your Bingo Package!</a>
+	<p ng-if="saving">Building your Bingo package. This will take a few minutes.</p>
 </div>

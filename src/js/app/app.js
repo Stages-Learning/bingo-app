@@ -1,17 +1,15 @@
 var bingo = (function(self){
 
-	angular.module('bingo', []).config(function($sceProvider){
+	angular.module('bingo', ['printable']).config(function($sceProvider){
 		$sceProvider.enabled(false);
 	});
 
-	  angular.trace = function (){
-	    for(var i = 0, count = arguments.length; i < count; i++)
-	    {
-	      try {console.log(arguments[i]);}
-	      catch (error){}
-	    }
-	  };
-
-
+	angular.trace = function (){
+		for(var i = 0, count = arguments.length; i < count; i++)
+		{
+		  try {console.log(arguments[i]);}
+		  catch (error){}
+		}
+	};
 	return self;
 }(bingo = bingo || {}));

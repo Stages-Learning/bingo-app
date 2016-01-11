@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('bingo')
-  .controller('BingoController', function ($scope,ImageService,$timeout,$window) {
+  .controller('BingoController', function ($scope,$filter,ImageService,DBService,$timeout,$window,$document,PrintableService,printable) {
   	var trace = angular.trace;
 
-  	$scope.currentPageIndex = 0;
+  	$scope.currentPageIndex = 1;
   	$scope.Math = window.Math;
   	$scope.appStyles = {render:false};
   	$scope.currentConfiguration = {pack:null,rows:0,cols:0};
@@ -24,7 +24,7 @@ angular.module('bingo')
         $scope.listing = ImageService.listing();
         $scope.lookup = ImageService.lookup();
     });
-    
+
     $scope.getPagePosition = function(index){
     	if(index === $scope.currentPageIndex) return "center";
     	if(index < $scope.currentPageIndex) return "left";
@@ -94,6 +94,8 @@ angular.module('bingo')
       }
 
       $scope.selectedCount = $scope.selectedMax;
+      generateMasterPool();
+
     };
 
     $scope.clearSelections = function()
@@ -102,8 +104,51 @@ angular.module('bingo')
     };
 
     $scope.generatePDF = function(){
-      return xepOnline.Formatter.Format('generation',{render:'download'});
+      var cards = [];
+      for(var i = 0; i < $scope.numCards; i++)
+      {
+        cards.push(generateCard());
+      }
+      $scope.saving = true;
+      DBService.saveGame($scope.currentConfiguration.pack,$scope.currentConfiguration.rows,$scope.currentConfiguration.cols,cards).then(renderDownloadButton);
     };
+
+    function renderDownloadButton(data)
+    {
+      $scope.downloadLink = DBService.downloadLink();
+      $scope.saving = false;
+    }
+
+    function generateMasterPool()
+    {
+      $scope.masterPool = [];
+      for(var id in $scope.selectedImages)
+      {
+        var image = $scope.lookup[id];
+        $scope.masterPool.push({label:image.label,src:image.path});
+      }
+    }
+
+    function generateCard()
+    {
+      return addImageToCard([]);
+    }
+
+    function addImageToCard(card)
+    {
+       var pool = refillCardPool(card);
+       var numImages = $scope.currentConfiguration.rows * $scope.currentConfiguration.cols;
+       var image = pool[Math.floor(Math.random()*pool.length)];
+       card.push(image);
+       if(card.length < numImages) addImageToCard(card);
+       return card;
+    }
+
+    function refillCardPool(card)
+    {
+      return $filter('eligible')($scope.masterPool,card);
+    }
+
 
     function shuffle(a,b)
     {

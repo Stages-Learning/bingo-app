@@ -20,6 +20,10 @@ module.exports = {
 				to:"<%= local.database.name %>"
 			},
 			{
+				from:'%BINGO_DB%',
+				to:"<%= local.database.bingoName %>"
+			},
+			{
 				from:'%ENVI%',
 				to:"dev"
 			}

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<title>Stages Bingo Creator</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link href="css/bingo.min.css" rel="stylesheet" type="text/css"/>
+	
 	<div id="app-container" ng-app="bingo" ng-controller="BingoController" ng-class="appStyles">
 		<section id="landing-page" ng-class="['page',getPagePosition(0)]" aria-hidden="{{currentPageIndex == 0 ? 'false':'true'}}" landing-view></section>
 		<section id="category-selection" ng-class="['page',getPagePosition(1)]" aria-hidden="{{currentPageIndex == 1 ? 'false':'true'}}" category-selection></section>
@@ -13,9 +15,16 @@
 	<script type="text/javascript" src="js/vendor/angular.min.js"></script>
 	<script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
 	<script type="text/javascript" src="js/vendor/jquery.min.js"></script>
-	<script type="text/javascript" src="js/vendor/xep.js"></script>
 
+	<script type="text/javascript" src="js/vendor/html2canvas.min.js"></script>
 
+	<script type="text/javascript" src="js/vendor/easeljs-0.8.2.min.js"></script>
+	<script type="text/javascript" src="js/vendor/preloadjs-0.6.2.min.js"></script>
+	<script type="text/javascript" src="js/vendor/tweenjs-0.6.2.min.js"></script>
+
+	<!-- <script type="text/javascript" src="js/vendor/xep.js"></script> -->
+
+	<script type="text/javascript" src="js/modules/printable/Printable.js"></script>
 	<script type="text/javascript" src="js/app/app.js"></script>
 	<script type="text/javascript" src="js/app/controllers/BingoController.js"></script>
 	<script type="text/javascript" src="js/app/directives/LandingViewDirective.js"></script>
@@ -26,6 +35,7 @@
 	<script type="text/javascript" src="js/app/filters/TechLanguageFilter.js"></script>
 	<script type="text/javascript" src="js/app/filters/PackFilter.js"></script>
 	<script type="text/javascript" src="js/app/filters/LabelFilter.js"></script>
+	<script type="text/javascript" src="js/app/filters/EligibleFilter.js"></script>
 	<script type="text/javascript" src="js/app/services/DBService.js"></script>
 	<script type="text/javascript" src="js/app/services/ImageService.js"></script>
 </html>
