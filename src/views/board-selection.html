@@ -4,7 +4,7 @@
 	<p>Select # of Rows and Columns</p>
 </header>
 <div id="grid-selection">
-	<button ng-init="column=1+(i-1)%5;row=1+Math.floor((i-1)/5);" ng-click="selectCardSize(row,column); setSampleGrid(row,column)" ng-class="['cell','column-'+column,'row-'+row]" data-column="{{column}}" data-row="{{row}}" ng-repeat="i in grid">
+	<button ng-init="column=1+(i-1)%5;row=1+Math.floor((i-1)/5);" ng-disabled="column!=row" ng-click="selectCardSize(row,column); setSampleGrid(row,column)" ng-class="['cell','column-'+column,'row-'+row]" data-column="{{column}}" data-row="{{row}}" ng-repeat="i in grid">
 </div>
 <p>This is what your card will look like.</p>
 <div id="sample-card">

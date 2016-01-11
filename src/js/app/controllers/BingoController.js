@@ -4,7 +4,7 @@ angular.module('bingo')
   .controller('BingoController', function ($scope,$filter,ImageService,DBService,$timeout,$window,$document) {
   	var trace = angular.trace;
 
-  	$scope.currentPageIndex = 1;
+  	$scope.currentPageIndex = 0;
   	$scope.Math = window.Math;
   	$scope.appStyles = {render:false};
   	$scope.currentConfiguration = {pack:null,rows:0,cols:0};

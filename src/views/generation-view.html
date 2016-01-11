@@ -4,6 +4,10 @@
 </header>
 <div class="buttonrow">
 	<button ng-if="!downloadLink &amp;&amp; !saving" ng-click="generatePDF()">Generate Bingo Cards</button>
-	<a ng-if="downloadLink &amp;&amp; !saving" target="_blank" ng-href="{{downloadLink}}">Download Your Bingo Package!</a>
-	<p ng-if="saving">Building your Bingo package. This will take a few minutes.</p>
+	<a ng-if="downloadLink &amp;&amp; !saving" ng-href="{{downloadLink}}">Download Your Bingo Package!</a>
+	<p ng-if="saving">
+		Building your Bingo package. This will take a few minutes.
+		<img class="loader" ng-src="app-images/loader.gif">
+	</p>
+	
 </div>

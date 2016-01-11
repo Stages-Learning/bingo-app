@@ -54,6 +54,8 @@
 		global $conn;
 		global $result;
 
+		error_log("generating files: $hash");
+
 		$query = "SELECT COUNT(*) as numCards FROM games g LEFT JOIN cards c ON g.id = c.gameID WHERE g.userhash = ?";
 		$stmt = $conn->prepare($query);
 		$stmt->bind_param('s',$hash);
@@ -75,14 +77,26 @@
 		
 		for($i = 1; $i <= $count; $i++)
 		{
+			set_time_limit(0);
 			$url = "http://".$_SERVER['SERVER_NAME']."/generator.php?userhash=$hash&card=$i";
 			$output = ".tmp/$hash/bingo/bingo-card-$i.pdf";
 			shell_exec("phantomjs php/scripts/bingo.js '$url' $output");
+
+			error_log("file creation complete: $output");
 		}
+		error_log("preparing to change dir");
 		chdir(".tmp/$hash");
+
+		error_log("zipping");
 		shell_exec("zip -r bingo.zip bingo");
+
+		error_log("moving");
 		shell_exec("mv bingo.zip ../../images/users/$hash/bingo/bingo.zip");
+
+		error_log("changing directory");
 		chdir("../../");
+
+		error_log("removing temp file");
 		shell_exec("rm -rf .tmp/$hash");
 		$result->url = "images/users/$hash/bingo/bingo.zip";
 	}
