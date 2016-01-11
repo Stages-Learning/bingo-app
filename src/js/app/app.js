@@ -1,6 +1,6 @@
 var bingo = (function(self){
 
-	angular.module('bingo', ['printable']).config(function($sceProvider){
+	angular.module('bingo', []).config(function($sceProvider){
 		$sceProvider.enabled(false);
 	});
 

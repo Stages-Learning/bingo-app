@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bingo')
-  .controller('BingoController', function ($scope,$filter,ImageService,DBService,$timeout,$window,$document,PrintableService,printable) {
+  .controller('BingoController', function ($scope,$filter,ImageService,DBService,$timeout,$window,$document) {
   	var trace = angular.trace;
 
   	$scope.currentPageIndex = 1;
