@@ -5,6 +5,7 @@
 <div class="buttonrow">
 	<button ng-if="!downloadLink &amp;&amp; !saving" ng-click="generatePDF()">Generate Bingo Cards</button>
 	<a ng-if="downloadLink &amp;&amp; !saving" ng-href="{{downloadLink}}">Download Your Bingo Package!</a>
+	<p class="prompt" ng-if="downloadLink &amp;&amp; !saving">Your Bingo bundle will persist at the URL above. Please bookmark it for safekeeping.</p>
 	<p ng-if="saving">
 		Building your Bingo package. This will take a few minutes.
 		<img class="loader" ng-src="app-images/loader.gif">
