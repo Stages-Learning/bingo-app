@@ -8,9 +8,9 @@ angular.module('bingo').service('DBService', function($http)
 
 	}
 
-	function saveGame(category,rows,cols,cards)
+	function saveGame(category,rows,cols,labels,cards)
 	{
-		return $http.post('php/scripts/DBService.php', {request:"save",hash:generateHash(),category:category.toLowerCase(),rows:rows,cols:cols,cards:cards}).success(onSaveComplete);
+		return $http.post('php/scripts/DBService.php', {request:"save",hash:generateHash(),category:category.toLowerCase(),rows:rows,cols:cols,labels:labels,cards:cards}).success(onSaveComplete);
 	}
 
 	function onSaveComplete(data)

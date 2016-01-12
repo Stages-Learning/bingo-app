@@ -94,8 +94,6 @@ angular.module('bingo')
       }
 
       $scope.selectedCount = $scope.selectedMax;
-      generateMasterPool();
-
     };
 
     $scope.clearSelections = function()
@@ -105,12 +103,13 @@ angular.module('bingo')
 
     $scope.generatePDF = function(){
       var cards = [];
+      generateMasterPool();
       for(var i = 0; i < $scope.numCards; i++)
       {
         cards.push(generateCard());
       }
       $scope.saving = true;
-      DBService.saveGame($scope.currentConfiguration.pack,$scope.currentConfiguration.rows,$scope.currentConfiguration.cols,cards).then(renderDownloadButton);
+      DBService.saveGame($scope.currentConfiguration.pack,$scope.currentConfiguration.rows,$scope.currentConfiguration.cols,$scope.labelManagement !== "none" ? "true":"false",cards).then(renderDownloadButton);
     };
 
     function renderDownloadButton(data)

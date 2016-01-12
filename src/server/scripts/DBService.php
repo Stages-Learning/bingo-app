@@ -9,6 +9,7 @@
 	$category = mysqli_real_escape_string($conn,$content->{'category'});
 	$rows = mysqli_real_escape_string($conn,$content->{'rows'});
 	$cols = mysqli_real_escape_string($conn,$content->{'cols'});
+	$labels = mysqli_real_escape_string($conn,$content->{'labels'});
 	$cards = $content->{'cards'};
 	$hash = mysqli_real_escape_string($conn,$content->{'hash'});
 	$result = new stdClass();
@@ -17,7 +18,7 @@
 	switch($request)
 	{
 		case "save":
-			save($category,$rows,$cols,$cards,$hash);
+			save($category,$rows,$cols,$cards,$labels,$hash);
 			generateFile($hash);
 		break;
 		case "generateFile":
@@ -28,12 +29,12 @@
 	$result->complete = true;
 	print json_encode($result);
 
-	function save($category,$rows,$cols,$cards,$hash)
+	function save($category,$rows,$cols,$cards,$labels,$hash)
 	{
 		global $conn;
-		$query = "INSERT INTO games (userhash,category,`cols`,`rows`) VALUES (?,?,?,?)";
+		$query = "INSERT INTO games (userhash,category,`cols`,`rows`,labels) VALUES (?,?,?,?,?)";
 		$stmt = $conn->prepare($query);
-		$stmt->bind_param('ssii',$hash,$category,$cols,$rows);
+		$stmt->bind_param('ssiis',$hash,$category,$cols,$rows,$labels);
 		$stmt->execute();
 		$id = $conn->insert_id;
 		$stmt->close();
