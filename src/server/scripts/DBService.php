@@ -11,6 +11,7 @@
 	$cols = mysqli_real_escape_string($conn,$content->{'cols'});
 	$labels = mysqli_real_escape_string($conn,$content->{'labels'});
 	$cards = $content->{'cards'};
+	$pool = $content->{'pool'};
 	$hash = mysqli_real_escape_string($conn,$content->{'hash'});
 	$result = new stdClass();
 
@@ -18,7 +19,7 @@
 	switch($request)
 	{
 		case "save":
-			save($category,$rows,$cols,$cards,$labels,$hash);
+			save($category,$rows,$cols,$cards,$pool,$labels,$hash);
 			generateFile($hash);
 		break;
 		case "generateFile":
@@ -29,12 +30,13 @@
 	$result->complete = true;
 	print json_encode($result);
 
-	function save($category,$rows,$cols,$cards,$labels,$hash)
+	function save($category,$rows,$cols,$cards,$pool,$labels,$hash)
 	{
 		global $conn;
-		$query = "INSERT INTO games (userhash,category,`cols`,`rows`,labels) VALUES (?,?,?,?,?)";
+		$encodedPool = stripslashes(json_encode($pool));
+		$query = "INSERT INTO games (userhash,category,`cols`,`rows`,labels,config) VALUES (?,?,?,?,?,?)";
 		$stmt = $conn->prepare($query);
-		$stmt->bind_param('ssiis',$hash,$category,$cols,$rows,$labels);
+		$stmt->bind_param('ssiiss',$hash,$category,$cols,$rows,$labels,$encodedPool);
 		$stmt->execute();
 		$id = $conn->insert_id;
 		$stmt->close();
@@ -73,6 +75,12 @@
 		
 		shell_exec("mkdir .tmp/$hash");
 		shell_exec("mkdir -p images/users/$hash/bingo");
+
+		set_time_limit(0);
+
+		$url = "http://".$_SERVER['SERVER_NAME']."/callers.generator.php?userhash=$hash";
+		$output = ".tmp/$hash/bingo/bingo-caller-cards.pdf";
+		shell_exec("phantomjs php/scripts/caller.js '$url' $output A4");
 		
 		for($i = 1; $i <= $count; $i++)
 		{

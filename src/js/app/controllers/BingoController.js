@@ -109,7 +109,7 @@ angular.module('bingo')
         cards.push(generateCard());
       }
       $scope.saving = true;
-      DBService.saveGame($scope.currentConfiguration.pack,$scope.currentConfiguration.rows,$scope.currentConfiguration.cols,$scope.labelManagement !== "none" ? "true":"false",cards).then(renderDownloadButton);
+      DBService.saveGame($scope.currentConfiguration.pack,$scope.currentConfiguration.rows,$scope.currentConfiguration.cols,$scope.labelManagement !== "none" ? "true":"false",cards,$scope.masterPool).then(renderDownloadButton);
     };
 
     function renderDownloadButton(data)
