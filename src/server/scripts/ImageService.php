@@ -26,8 +26,11 @@
 		$data->cards = array();
 
 		$query = "SELECT cards.id, cards.label AS `cardLabel`, cards.path, packs.label AS `packLabel` FROM cards 
+					LEFT JOIN games_cards ON cards.id = games_cards.card
 					LEFT JOIN cards_packs ON cards.id = cards_packs.card
-					LEFT JOIN packs ON packs.id = cards_packs.pack";
+					LEFT JOIN packs ON packs.id = cards_packs.pack
+					WHERE games_cards.game = 1";
+					
 		$stmt = $conn->prepare($query);
 		$stmt->execute();
 		$stmt->store_result();
