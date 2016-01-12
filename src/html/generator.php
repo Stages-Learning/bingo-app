@@ -38,8 +38,6 @@
 		$list = $info->config;
 
 		mysqli_close($conn);
-		error_log("printing page for pdf: $hash");
-		
 		?>
 		
 		<img id="bg" src="templates/bingo-card-template-<?php print $rows?>x<?php print $cols;?>.png">
