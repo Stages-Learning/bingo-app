@@ -42,7 +42,7 @@
 		mysqli_close($conn);
 		?>
 		
-		<img id="bg" src="templates/bingo-card-template-<?php print $rows?>x<?php print $cols;?>.png">
+		<img id="bg" src="templates/bingo-card-template-<?php print $cols?>x<?php print $rows;?>.png">
 		<img id="label-top" src="labels/<?php print $game; ?>-label.png">
 		<img id="label-bottom" src="labels/<?php print $game; ?>-label.png">
 		
@@ -78,57 +78,178 @@
 	}
 	span.label {display:block; box-sizing:border-box; padding-top:5px; width: 100%; height:30px; background:rgba(255,255,255,0.9); color:black; text-align:center; font-family:sans-serif;}
 	span.label.hide {display:none;}
+	
+	div.cards.row-5.col-4{left: 270px;}
+	div.cards.row-5.col-3{left: 414px;}
+	div.cards.row-4.col-3{left: 298px;}
+	div.cards.row-5.col-2{left: 571px;}
+	div.cards.row-4.col-2{left: 488px;}
+	div.cards.row-3.col-2{left: 367px;} 
+	div.cards.row-5.col-1{left: 722px;} 
+	div.cards.row-4.col-1{left: 684px;} 
+	div.cards.row-3.col-1{left: 620px;} 
+	div.cards.row-2.col-1{left: 492px;} 
 
 	div.cards span.card {display:block; position:absolute; top:0px; left:0px;}
 	div.cards span.card img {display:block; width: 100%;}
 	
-	div.cards.row-5.col-5 span.card { width: 260px;}
-	div.cards.row-4.col-4 span.card { width: 280px;}
-	div.cards.row-3.col-3 span.card { width: 400px;}
-	div.cards.row-2.col-2 span.card { width: 600px;}
-	div.cards.row-1.col-1 span.card { width: 1300px;}
+	div.cards.col-5 span.card { width: 260px;}
+	div.cards.col-4 span.card { width: 280px;}
+	div.cards.col-3 span.card { width: 400px;}
+	div.cards.col-2 span.card { width: 600px;}
+	div.cards.col-1 span.card { width: 1300px;}
+
+	div.cards.row-5.col-4 span.card,
+	div.cards.row-5.col-3 span.card,
+	div.cards.row-5.col-2 span.card,
+	div.cards.row-5.col-1 span.card
+	{ width: 260px;}
+
+	div.cards.row-4.col-3 span.card,
+	div.cards.row-4.col-2 span.card,
+	div.cards.row-4.col-1 span.card 
+	{ width: 280px;}
+
+	div.cards.row-3.col-2 span.card,
+	div.cards.row-3.col-1 span.card 
+	{ width: 400px;}
+
+	div.cards.row-2.col-1 span.card 
+	{ width: 600px;}
 	
+	/* 5x1, 5x2, 5x3, 5x4, 5x5 */
 	div.cards.col-5 span.card:nth-child(5n+1){left:13px;}
 	div.cards.col-5 span.card:nth-child(5n+2){left:315px;}
 	div.cards.col-5 span.card:nth-child(5n+3){left:617px;}
 	div.cards.col-5 span.card:nth-child(5n+4){left:921px;}
 	div.cards.col-5 span.card:nth-child(5n+5){left:1225px;}
 	
-	div.cards.row-5 span.card:nth-child(n){top:58px;}
-	div.cards.row-5 span.card:nth-child(n+6){top:387px;}
-	div.cards.row-5 span.card:nth-child(n+11){top:728px;}
-	div.cards.row-5 span.card:nth-child(n+16){top:1063px;}
-	div.cards.row-5 span.card:nth-child(n+21){top:1396px;}
+	div.cards.col-5 span.card:nth-child(n){top:58px;}
+	div.cards.col-5 span.card:nth-child(n+6){top:387px;}
+	div.cards.col-5 span.card:nth-child(n+11){top:728px;}
+	div.cards.col-5 span.card:nth-child(n+16){top:1063px;}
+	div.cards.col-5 span.card:nth-child(n+21){top:1396px;}
 	
 	
+
+	/*4x1, 4x2, 4x3, 4x4, 4x5 */
 	div.cards.col-4 span.card:nth-child(4n+1){left:43px;}
 	div.cards.col-4 span.card:nth-child(4n+2){left:421px;}
 	div.cards.col-4 span.card:nth-child(4n+3){left:801px;}
 	div.cards.col-4 span.card:nth-child(4n+4){left:1181px;}
 	
-	div.cards.row-4 span.card:nth-child(n){top:90px;}
-	div.cards.row-4 span.card:nth-child(n+5){top:517px;}
-	div.cards.row-4 span.card:nth-child(n+9){top:938px;}
-	div.cards.row-4 span.card:nth-child(n+13){top:1353px;}
+	div.cards.col-4 span.card:nth-child(n){top:90px;}
+	div.cards.col-4 span.card:nth-child(n+5){top:517px;}
+	div.cards.col-4 span.card:nth-child(n+9){top:938px;}
+	div.cards.col-4 span.card:nth-child(n+13){top:1353px;}
+
+	div.cards.row-5.col-4 span.card:nth-child(4n+1){left:13px;}
+	div.cards.row-5.col-4 span.card:nth-child(4n+2){left:315px;}
+	div.cards.row-5.col-4 span.card:nth-child(4n+3){left:617px;}
+	div.cards.row-5.col-4 span.card:nth-child(4n+4){left:921px;}
+
+	div.cards.row-5.col-4 span.card:nth-child(n){top:58px;}
+	div.cards.row-5.col-4 span.card:nth-child(n+5){top:387px;}
+	div.cards.row-5.col-4 span.card:nth-child(n+9){top:728px;}
+	div.cards.row-5.col-4 span.card:nth-child(n+13){top:1063px;}
+	div.cards.row-5.col-4 span.card:nth-child(n+17){top:1396px;}
+
+
+
+
+
+
 	
 	div.cards.col-3 span.card:nth-child(3n+1){left:43px;}
 	div.cards.col-3 span.card:nth-child(3n+2){left:551px;}
 	div.cards.col-3 span.card:nth-child(3n+3){left:1061px;}
 
 	
-	div.cards.row-3 span.card:nth-child(n){top:90px;}
-	div.cards.row-3 span.card:nth-child(n+4){top:677px;}
-	div.cards.row-3 span.card:nth-child(n+7){top:1228px;}
+	div.cards.col-3 span.card:nth-child(n){top:90px;}
+	div.cards.col-3 span.card:nth-child(n+4){top:677px;}
+	div.cards.col-3 span.card:nth-child(n+7){top:1228px;}
+
+
+	div.cards.row-5.col-3 span.card:nth-child(3n+1){left:13px;}
+	div.cards.row-5.col-3 span.card:nth-child(3n+2){left:315px;}
+	div.cards.row-5.col-3 span.card:nth-child(3n+3){left:617px;}
+
+	div.cards.row-5.col-3 span.card:nth-child(n){top:58px;}
+	div.cards.row-5.col-3 span.card:nth-child(n+4){top:387px;}
+	div.cards.row-5.col-3 span.card:nth-child(n+7){top:728px;}
+	div.cards.row-5.col-3 span.card:nth-child(n+10){top:1063px;}
+	div.cards.row-5.col-3 span.card:nth-child(n+13){top:1396px;}
+
+	div.cards.row-4.col-3 span.card:nth-child(3n+1){left:43px;}
+	div.cards.row-4.col-3 span.card:nth-child(3n+2){left:421px;}
+	div.cards.row-4.col-3 span.card:nth-child(3n+3){left:801px;}
+
+	div.cards.row-4.col-3 span.card:nth-child(n){top:90px;}
+	div.cards.row-4.col-3 span.card:nth-child(n+4){top:517px;}
+	div.cards.row-4.col-3 span.card:nth-child(n+7){top:938px;}
+	div.cards.row-4.col-3 span.card:nth-child(n+10){top:1353px;}
+
 	
 	div.cards.col-2 span.card:nth-child(2n+1){left:73px;}
 	div.cards.col-2 span.card:nth-child(2n+2){left:831px;}
 
-	div.cards.row-2 span.card:nth-child(n){top:200px;}
-	div.cards.row-2 span.card:nth-child(n+3){top:1000px;}
+	div.cards.col-2 span.card:nth-child(n){top:200px;}
+	div.cards.col-2 span.card:nth-child(n+3){top:1000px;}
+
+
+
+	div.cards.row-5.col-2 span.card:nth-child(2n+1){left:13px;}
+	div.cards.row-5.col-2 span.card:nth-child(2n+2){left:315px;}
+	
+	div.cards.row-5.col-2 span.card:nth-child(n){top:58px;}
+	div.cards.row-5.col-2 span.card:nth-child(n+3){top:387px;}
+	div.cards.row-5.col-2 span.card:nth-child(n+5){top:728px;}
+	div.cards.row-5.col-2 span.card:nth-child(n+7){top:1063px;}
+	div.cards.row-5.col-2 span.card:nth-child(n+9){top:1396px;}
+
+
+	div.cards.row-4.col-2 span.card:nth-child(2n+1){left:43px;}
+	div.cards.row-4.col-2 span.card:nth-child(2n+2){left:421px;}
+
+	div.cards.row-4.col-2 span.card:nth-child(n){top:90px;}
+	div.cards.row-4.col-2 span.card:nth-child(n+3){top:517px;}
+	div.cards.row-4.col-2 span.card:nth-child(n+5){top:938px;}
+	div.cards.row-4.col-2 span.card:nth-child(n+7){top:1353px;}
+
+	div.cards.row-3.col-2 span.card:nth-child(2n+1){left:43px;}
+	div.cards.row-3.col-2 span.card:nth-child(2n+2){left:551px;}
+
+	div.cards.row-3.col-2 span.card:nth-child(n){top:90px;}
+	div.cards.row-3.col-2 span.card:nth-child(n+3){top:677px;}
+	div.cards.row-3.col-2 span.card:nth-child(n+5){top:1228px;}
+
+
+
 
 	div.cards.col-1 span.card:nth-child(1n+1){left:94px;}
 
-	div.cards.row-1 span.card:nth-child(n){top:343px;}
+	div.cards.col-1 span.card:nth-child(n){top:343px;}
+
+	div.cards.row-5.col-1 span.card:nth-child(1n+1){left:13px;}
+	div.cards.row-5.col-1 span.card:nth-child(1){top:58px;}
+	div.cards.row-5.col-1 span.card:nth-child(2){top:387px;}
+	div.cards.row-5.col-1 span.card:nth-child(3){top:728px;}
+	div.cards.row-5.col-1 span.card:nth-child(4){top:1063px;}
+	div.cards.row-5.col-1 span.card:nth-child(5){top:1396px;}
+
+	div.cards.row-4.col-1 span.card:nth-child(1n+1){left:43px;}
+	div.cards.row-4.col-1 span.card:nth-child(1){top:90px;}
+	div.cards.row-4.col-1 span.card:nth-child(2){top:517px;}
+	div.cards.row-4.col-1 span.card:nth-child(3){top:938px;}
+	div.cards.row-4.col-1 span.card:nth-child(4){top:1353px;}
+	div.cards.row-3.col-1 span.card:nth-child(1n+1){left:43px;}
+	div.cards.row-3.col-1 span.card:nth-child(1){top:90px;}
+	div.cards.row-3.col-1 span.card:nth-child(2){top:677px;}
+	div.cards.row-3.col-1 span.card:nth-child(3){top:1228px;}
+
+	div.cards.row-2.col-1 span.card:nth-child(1n+1){left:73px;}
+	div.cards.row-2.col-1 span.card:nth-child(1){top:200px;}
+	div.cards.row-2.col-1 span.card:nth-child(2){top:1000px;}
 	
 	<?php 
 	
