@@ -8,6 +8,7 @@ module.exports = {
       {expand: true, cwd:'assets/images', src: ["**/*"], dest: "<%= local.staging %>/app-images"},
       {expand: true, cwd:'assets/templates', src: ["**/*"], dest: "<%= local.staging %>/templates"},
       {expand: true, cwd:'assets/labels', src: ["**/*"], dest: "<%= local.staging %>/labels"},
+      {expand: true, cwd:'assets/pdfs', src: ["**/*"], dest: "<%= local.staging %>/pdfs"},
       {expand: true, cwd:'src/js', src: ["**/*"], dest: "<%= local.staging %>/js"}
     ]
   },
