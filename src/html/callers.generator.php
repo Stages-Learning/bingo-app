@@ -37,7 +37,7 @@
 			if($count == 0) print "<div class='page'>";
 			print "<span class='card'><img src='$src'><span class='label $labelClass'>$label</span></span>";
 			$count ++;
-			if($count == 8)
+			if($count == 33)
 			{
 				$count = 0;
 				print "</div>";
@@ -70,42 +70,36 @@
 		span.card 
 		{
 			position: relative;
-			display: block;
 			display: inline-block;
-			width: 40%;
+			width: 30%;
 			margin-top: 10px;
-			margin-left: 5%;
-			margin-right: 5%;
+			margin-left:1%;
+			margin-right: 1%;
 			padding: 2%;
 			box-sizing:border-box;
-			border: dashed 2px black;
+			border: dashed 1px black;
 		}
 
 		span.card img 
 		{
 			display: block;
-			width: 100%;
+			width: 25%;
+			float:left;
 		}
 
 		span.card .label 
 		{
-			position: absolute;
 			display: block;
-			width: 90%;
-			left: 5%;
+			float:left;
 			height: 30px;
 			color:black;
 			background-color: white;
 			text-align: center;
-			bottom: 0px;
 			box-sizing:border-box;
-			padding-top: 4px;
-			font-size: 16px;
+			padding-top: 5px;
+			padding-left: 10px;
+			font-size: 12px;
 			font-family: sans-serif;
-		}
-		span.card .label.hide 
-		{
-			display: none;
 		}
 		
 	</style>
