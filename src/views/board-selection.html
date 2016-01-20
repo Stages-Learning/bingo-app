@@ -6,14 +6,9 @@
 <div id="grid-selection">
 	<button ng-init="column=1+(i-1)%5;row=1+Math.floor((i-1)/5);" ng-click="selectCardSize(row,column); setSampleGrid(row,column)" ng-class="['cell','column-'+column,'row-'+row]" data-column="{{column}}" data-row="{{row}}" ng-repeat="i in grid">
 </div>
-<p>This is what your card will look like.</p>
-<div id="sample-card">
-	<img class="sample-card-bg" ng-src="{{'app-images/foods-card.jpg'}}">
-	<div class="sample-grid" ng-class="['cols-'+currentConfiguration.cols,'rows-'+currentConfiguration.rows]">
-		<span class="block" ng-repeat="item in sampleGrid">
-			<img ng-class="['card-'+$index]" ng-src="{{randomImages[$index].path}}" />
-		</span>
-	</div>
+<p ng-if="currentConfiguration.cols">This is what your card will look like.</p>
+<div id="sample-card" ng-if="currentConfiguration.cols">
+	<img class="sample-card-bg" ng-src="{{'app-images/'+currentConfiguration.cols+'x'+currentConfiguration.rows+'.jpg'}}">
 </div>
 <nav>
 	<ul>
