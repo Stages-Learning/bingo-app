@@ -20,7 +20,7 @@
 	{
 		case "save":
 			save($category,$rows,$cols,$cards,$pool,$labels,$hash);
-			generateFile($hash);
+			//generateFile($hash);
 		break;
 		case "generateFile":
 			generateFile($hash);

@@ -6,7 +6,7 @@
 	<div class="formrow">
 		<label for="number-selection">I would like to print </label>
 		<select id="number-selection" ng-model="numCards" ng-change="updateMax()">
-			<option value="{{$index}}" ng-repeat="option in countOptions" ng-bind-html="$index" ng-selected="{{$index==1}}"></option>
+			<option value="{{option.value}}" ng-repeat="option in countOptions" ng-bind-html="option.value + ' ($'+(2+((option.value)-4)/4) + '.00)'" ng-selected="{{$index==0}}"></option>
 		</select>
 		<span>bingo cards</span>
 	</div>
@@ -25,7 +25,7 @@
 </form>
 <h3 ng-if="(selectedMax - selectedCount) > 0" ng-bind-html="'Select ' + (selectedMax - selectedCount) + ' ' + (selectedCount > 0 ? 'more ':'')  + 'card'+(selectedMax - selectedCount == 1 ? '':'s')+' to complete your game'"></h3>
 <div class="button-row">
-	<button ng-click="setCurrentPage(4)" ng-if="selectedMax - selectedCount == 0">Generate Bingo Cards!</button>
+	<button ng-click="setCurrentPage(4)" ng-if="selectedMax - selectedCount == 0">Purchase your bingo cards!</button>
 	<button ng-click="selectRandomImages()" ng-if="selectedMax - selectedCount > 0">Select Random Images</button>
 	<button ng-click="clearSelections()">Clear Selections</button>
 </div>

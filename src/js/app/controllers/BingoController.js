@@ -13,8 +13,9 @@ angular.module('bingo')
     $scope.selectedImages = {};
     $scope.selectedCount = 0;
     $scope.selectedMax = 25;
-    $scope.numCards = 1;
+    $scope.numCards = 4;
     $scope.labelManagement = "auto";
+    $scope.mode = typeof __HASH__ !== "undefined" ? "download" : "creation";
 
     ImageService.load().then(function(){
         $timeout(function(){
@@ -112,10 +113,21 @@ angular.module('bingo')
       DBService.saveGame($scope.currentConfiguration.pack,$scope.currentConfiguration.rows,$scope.currentConfiguration.cols,$scope.labelManagement !== "none" ? "true":"false",cards,$scope.masterPool).then(renderDownloadButton);
     };
 
+    $scope.generateDownload = function()
+    {
+      $scope.saving = true;
+      DBService.generateDownload(__HASH__).then(renderFinalDownloadButton);
+    };
+
     function renderDownloadButton(data)
     {
-      $scope.downloadLink = DBService.downloadLink();
       $scope.saving = false;
+    }
+    function renderFinalDownloadButton(data)
+    {
+      trace("here we are: ",data);
+      $scope.saving = false;
+      $scope.downloadLink = DBService.downloadLink();
     }
 
     function generateMasterPool()

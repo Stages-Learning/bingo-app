@@ -7,7 +7,7 @@
       {
         var trace = angular.trace;
         $scope.countOptions = [];
-        for(var i = 1; i <= 37; i++)
+        for(var i = 4; i <= 36; i+=4)
         {
         	$scope.countOptions.push({name:i,value:i});
         }

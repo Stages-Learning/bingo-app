@@ -1,7 +1,11 @@
-angular.module('bingo').service('DBService', function($http)
+angular.module('bingo').service('DBService', function($http,$window)
 {
 	var trace = angular.trace;
 	var tech = {};
+	var cardNumber;
+	var pack;
+	var hash;
+	var link = "";
 
 	function load()
 	{
@@ -10,11 +14,25 @@ angular.module('bingo').service('DBService', function($http)
 
 	function saveGame(category,rows,cols,labels,cards,pool)
 	{
-		return $http.post('php/scripts/DBService.php', {request:"save",hash:generateHash(),category:category.toLowerCase(),rows:rows,cols:cols,labels:labels,cards:cards,pool:pool}).success(onSaveComplete);
+		hash = generateHash();
+		cardNumber = cards.length;
+		pack = category.toUpperCase();
+		return $http.post('php/scripts/DBService.php', {request:"save",hash:hash,category:category.toLowerCase(),rows:rows,cols:cols,labels:labels,cards:cards,pool:pool}).success(onSaveComplete);
+	}
+	function generateDownload(hash)
+	{
+		return $http.post('php/scripts/DBService.php', {request:"generateFile",hash:hash}).success(onDownloadComplete);
+
 	}
 
 	function onSaveComplete(data)
 	{
+		//link = data.url;
+		$window.parent.postMessage({quantity:cardNumber,pack:pack,hash:hash},"http://bingo-development.myshopify.com");
+	}
+	function onDownloadComplete(data)
+	{
+		trace("generated");
 		link = data.url;
 	}
 
@@ -29,6 +47,7 @@ angular.module('bingo').service('DBService', function($http)
 	}
 	return {
 		saveGame:saveGame,
+		generateDownload: generateDownload,
 		downloadLink: downloadLink
 	}
 
