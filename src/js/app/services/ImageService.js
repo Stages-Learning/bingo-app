@@ -38,8 +38,8 @@ angular.module('bingo').service('ImageService', function($http,$filter)
 	}
 	function sortPacks(a,b)
 	{
-		if(a.label > b.label) return 1;
-		if(a.label < b.label) return -1;
+		if(a.pack > b.pack) return 1;
+		if(a.pack < b.pack) return -1;
 		return 0;
 	}
 

@@ -22,7 +22,6 @@ angular.module('bingo').service('DBService', function($http,$window)
 	function generateDownload(hash)
 	{
 		return $http.post('php/scripts/DBService.php', {request:"generateFile",hash:hash}).success(onDownloadComplete);
-
 	}
 
 	function onSaveComplete(data)

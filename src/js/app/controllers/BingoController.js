@@ -22,7 +22,7 @@ angular.module('bingo')
             $scope.appStyles.render= true;
         },500);
         $scope.packs = ImageService.packs();
-        $scope.listing = ImageService.listing();
+        $scope.sourceListing = $scope.listing = ImageService.listing();
         $scope.lookup = ImageService.lookup();
     });
 
@@ -39,6 +39,7 @@ angular.module('bingo')
 
     $scope.selectCategory = function()
     {
+      $scope.listing = $filter('card')($scope.sourceListing,$scope.currentConfiguration.pack);
       $scope.setCurrentPage(2);
     };
     $scope.selectCard = function()
@@ -51,9 +52,7 @@ angular.module('bingo')
       var numCards = parseInt($scope.numCards);
     	$scope.currentConfiguration.rows = rows;
     	$scope.currentConfiguration.cols = cols;
-      if(numCards === 1) $scope.selectedMax = ($scope.currentConfiguration.rows * $scope.currentConfiguration.cols);
-      else if(numCards === 2) $scope.selectedMax = Math.ceil($scope.currentConfiguration.rows * $scope.currentConfiguration.cols*1.5);
-      else $scope.selectedMax = ($scope.currentConfiguration.rows * $scope.currentConfiguration.cols*2);
+      $scope.updateMax();
     };
 
     $scope.updateImageList = function()
@@ -72,10 +71,11 @@ angular.module('bingo')
     $scope.updateMax = function()
     {
       var numCards = parseInt($scope.numCards);
-      if(numCards === 1) $scope.selectedMax = ($scope.currentConfiguration.rows * $scope.currentConfiguration.cols);
-      else if(numCards === 2) $scope.selectedMax = Math.ceil($scope.currentConfiguration.rows * $scope.currentConfiguration.cols*1.5);
-      else $scope.selectedMax = ($scope.currentConfiguration.rows * $scope.currentConfiguration.cols*2);
+     // if(numCards === 1) $scope.selectedMax = ($scope.currentConfiguration.rows * $scope.currentConfiguration.cols);
+      //else if(numCards === 2) $scope.selectedMax = Math.ceil($scope.currentConfiguration.rows * $scope.currentConfiguration.cols*1.5);
+      //else $scope.selectedMax = ($scope.currentConfiguration.rows * $scope.currentConfiguration.cols*2);
 
+      $scope.selectedMax = Math.min($scope.listing.length,$scope.currentConfiguration.rows * $scope.currentConfiguration.cols*2)
       deselect();
     };
 
@@ -125,7 +125,6 @@ angular.module('bingo')
     }
     function renderFinalDownloadButton(data)
     {
-      trace("here we are: ",data);
       $scope.saving = false;
       $scope.downloadLink = DBService.downloadLink();
     }
