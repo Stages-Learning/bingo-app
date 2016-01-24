@@ -121,7 +121,7 @@ angular.module('bingo')
 
     function renderDownloadButton(data)
     {
-      $scope.saving = false;
+      //$scope.saving = false;
     }
     function renderFinalDownloadButton(data)
     {
