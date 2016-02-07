@@ -6,7 +6,7 @@
 	<div class="formrow">
 		<label for="number-selection">I would like to print </label>
 		<select id="number-selection" ng-model="numCards" ng-change="updateMax()">
-			<option value="{{option.value}}" ng-repeat="option in countOptions" ng-bind-html="option.value + ' ($'+(2+((option.value)-4)/4) + '.00)'" ng-selected="{{$index==0}}"></option>
+			<option value="{{option.value}}" ng-repeat="option in countOptions" ng-bind-html="option.value + ' ($'+ option.price +')'" ng-selected="{{$index==0}}"></option>
 		</select>
 		<span>bingo cards</span>
 	</div>
