@@ -27,7 +27,7 @@ angular.module('bingo').service('DBService', function($http,$window)
 	function onSaveComplete(data)
 	{
 		//link = data.url;
-		$window.parent.postMessage({quantity:cardNumber,pack:pack,hash:hash},"http://bingo-development.myshopify.com");
+		$window.parent.postMessage({quantity:cardNumber,pack:pack,hash:hash},"http://stageslearning.com");
 	}
 	function onDownloadComplete(data)
 	{
