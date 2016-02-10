@@ -56,6 +56,23 @@ angular.module('bingo')
       $scope.updateMax();
     };
 
+    $scope.resetCount  = function()
+    {
+      for(var i = $scope.listing.length - 1; i >= 0; i--)
+      {
+        var image = $scope.listing[i];
+        image.label = image.originalLabel;
+        if(image.selected)
+        {
+          image.selected = false;
+        }
+      }
+
+      $scope.selectedImages = {};
+      $scope.selectedCount = 0;
+      trace("reset");
+    };
+
     $scope.updateImageList = function()
     {
       var count = 0;
