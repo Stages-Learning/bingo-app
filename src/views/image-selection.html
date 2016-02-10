@@ -41,7 +41,7 @@
 </form>
 <nav>
 	<ul>
-		<li><button class="previous" ng-click="setCurrentPage(2)"><span>Back</span></button></li>
+		<li><button class="previous" ng-click="clearSelections(); setCurrentPage(2)"><span>Back</span></button></li>
 		<li><button class="next" ng-click="setCurrentPage(4)" ng-disabled="selectedMax - selectedCount > 0"><span>Next</span></button></li>
 	</ul>
 </nav>
