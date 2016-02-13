@@ -1,6 +1,6 @@
 <header>
-	<h1 ng-if="mode != 'download'"><span class="step">Step 5:</span> Add Your Cards to Your Cart</h1>
-	<h1 ng-if="mode == 'download'">Download your bingo set</h1>
+	<h1 ng-if="mode != 'download' &amp;&amp; !free"><span class="step">Step 4:</span> Add Your Cards to Your Cart</h1>
+	<h1 ng-if="mode == 'download' || free"><span class="step">Step 4:</span> Download Your Free Bingo Cards</h1>
 	<p>Click the button below to generate your download bundle.</p>
 </header>
 <div class="buttonrow">
