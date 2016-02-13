@@ -4,10 +4,16 @@
 	<p>Click the button below to generate your download bundle.</p>
 </header>
 <div class="buttonrow">
-	<button ng-if="mode != 'download' &amp;&amp; !downloadLink &amp;&amp; !saving" ng-click="generatePDF()">Add to Cart</button>
+	
+	<button ng-if="mode != 'download' &amp;&amp; !downloadLink &amp;&amp; !saving &amp;&amp; !free" ng-click="generatePDF()">Add to Cart</button>
 	<button ng-if="mode == 'download' &amp;&amp; !downloadLink &amp;&amp; !saving" ng-click="generateDownload()">Generate PDF</button>
 	<a ng-if="mode == 'download' &amp;&amp; downloadLink &amp;&amp; !saving" ng-href="{{downloadLink}}">Download Your Bingo Package!</a>
 	<p class="prompt" ng-if="mode == 'download' &amp;&amp; downloadLink &amp;&amp; !saving">Your Bingo bundle will persist at the URL above. Please bookmark it for safekeeping.</p>
+	
+	<button ng-if="free &amp;&amp; !downloadLink &amp;&amp; !saving" ng-click="generatePDF()">Generate PDF</button>
+	<a ng-if="free &amp;&amp; downloadLink &amp;&amp; !saving" ng-href="{{downloadLink}}">Download Your Bingo Package!</a>
+	<p class="prompt" ng-if="free &amp;&amp; downloadLink &amp;&amp; !saving">Your Bingo bundle will persist at the URL above. Please bookmark it for safekeeping.</p>
+
 	<p ng-if="mode != 'download' &amp;&amp; saving">
 		Configuring your Bingo package...
 		<img class="loader" ng-src="app-images/loader.gif">

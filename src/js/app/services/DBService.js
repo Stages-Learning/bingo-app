@@ -31,7 +31,6 @@ angular.module('bingo').service('DBService', function($http,$window)
 	}
 	function onDownloadComplete(data)
 	{
-		trace("generated");
 		link = data.url;
 	}
 
@@ -44,10 +43,16 @@ angular.module('bingo').service('DBService', function($http,$window)
 	{
 		return link;
 	}
+	function getCurrentHash()
+	{
+		return hash;
+	}
 	return {
 		saveGame:saveGame,
 		generateDownload: generateDownload,
-		downloadLink: downloadLink
+		downloadLink: downloadLink,
+		getCurrentHash: getCurrentHash,
+		generateHash:generateHash
 	}
 
 	

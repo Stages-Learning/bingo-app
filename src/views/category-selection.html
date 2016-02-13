@@ -3,12 +3,25 @@
 	<h1><span class="step">Step 1:</span> Select a Category</h1>
 </header>
 <form class="selection-container">
-	<div class="formrow" ng-repeat="pack in packs">
-		<input id="pack-{{pack.id}}" type="radio" value="{{pack.pack}}" name="category" ng-click="selectCategory()" ng-model="currentConfiguration.pack">
-		<label for="pack-{{pack.id}}">
-			<span class="label" ng-bind-html="pack.pack"></span>
-			<img ng-src="{{pack.path}}" alt="{{pack.label}}">
-		</label>
+	<div class="free">
+		<h2>Free</h2>
+		<div class="formrow" ng-repeat="pack in packs|free:true">
+			<input id="pack-{{pack.id}}" type="radio" value="{{pack.pack}}" name="category" ng-click="selectCategory()" ng-model="currentConfiguration.pack">
+			<label for="pack-{{pack.id}}">
+				<span class="label" ng-bind-html="pack.pack"></span>
+				<img ng-src="{{pack.path}}" alt="{{pack.label}}">
+			</label>
+		</div>
+	</div>
+	<div class="premium">
+		<h2>Premium</h2>
+		<div class="formrow" ng-repeat="pack in packs|free:false">
+			<input id="pack-{{pack.id}}" type="radio" value="{{pack.pack}}" name="category" ng-click="selectCategory()" ng-model="currentConfiguration.pack">
+			<label for="pack-{{pack.id}}">
+				<span class="label" ng-bind-html="pack.pack"></span>
+				<img ng-src="{{pack.path}}" alt="{{pack.label}}">
+			</label>
+		</div>
 	</div>
 </form>
 <div class="buttonrow">

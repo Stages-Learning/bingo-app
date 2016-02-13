@@ -70,7 +70,6 @@ angular.module('bingo')
 
       $scope.selectedImages = {};
       $scope.selectedCount = 0;
-      trace("reset");
     };
 
     $scope.updateImageList = function()
@@ -139,7 +138,11 @@ angular.module('bingo')
 
     function renderDownloadButton(data)
     {
-      //$scope.saving = false;
+      var pack =  ImageService.packLookup[$scope.currentConfiguration.pack];
+      if(pack.free) 
+      {
+        DBService.generateDownload(DBService.getCurrentHash()).then(renderFinalDownloadButton);
+      }
     }
     function renderFinalDownloadButton(data)
     {

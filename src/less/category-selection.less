@@ -4,6 +4,19 @@ section#category-selection
 	{
 		.box-sizing();
 		list-style:none;
+
+		div.free,div.premium
+		{
+			.box-sizing();
+			width: 50%;
+			float: left;
+			h2 {
+				padding-left: 22%;
+				font-size: 34px;}
+		}
+		div.free h2 {text-align: center;}
+		div.free div.formrow label {padding-left: 22%;}
+		div.premium h2 {text-align: left;}
 		div.formrow
 		{
 			.box-sizing();
@@ -29,8 +42,8 @@ section#category-selection
 				cursor: pointer;
 				overflow: visible;
 				font-size: 40px;
-				width: 60%;
-				margin: 0px 20%;
+				width: 70%;
+				margin: 0px 0%;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -59,6 +72,10 @@ section#category-selection
 					.box-sizing();
 				}
 			}
+
+			@media only screen and (max-width:768px) {
+				label span.label {font-size: 16px;}
+			}
 			
 
 			&.selected 
@@ -83,8 +100,9 @@ section#category-selection
 
 	div.buttonrow {
 		text-align: center;
-		margin-top: 50px;
+		padding-top:50px;
 		margin-bottom: 20px;
+		clear: both;
 
 		button {
 			padding: 10px;

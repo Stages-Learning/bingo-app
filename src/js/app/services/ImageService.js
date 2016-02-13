@@ -4,6 +4,7 @@ angular.module('bingo').service('ImageService', function($http,$filter)
 	var lookup = {};
 	var listing = [];
 	var packs = [];
+	var packLookup = {};
 
 	function load()
 	{
@@ -22,6 +23,10 @@ angular.module('bingo').service('ImageService', function($http,$filter)
 			lookup['image-'+card.id] = card;
 			card.label = card.originalLabel = $filter('label')(card.label);
 		}
+
+		angular.forEach(packs,function(pack){
+			packLookup[pack.pack] = pack;
+		});
 	}
 
 	function getListing()
@@ -46,6 +51,7 @@ angular.module('bingo').service('ImageService', function($http,$filter)
 	return {
 		load: load,
 		lookup: getLookup,
+		packLookup:packLookup,
 		listing: getListing,
 		packs: getPacks
 	}
