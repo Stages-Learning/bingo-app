@@ -16,6 +16,30 @@ section#generation
 		}
 	}
 
+	form {
+		input{
+			display: block;
+			width: 300px;
+			height: 35px;
+			border: solid 1px #dedede;
+			border-radius: 8px;
+			margin: 0px auto 0px auto;
+			font-size: 18px;
+			padding: 5px;
+			box-sizing: border-box;
+		}
+		label {
+			display: block;
+			margin-top: 40px;
+			margin-bottom: 10px;
+			font-style: italic;
+			color: @text;
+		}
+		button:disabled {
+			opacity: 0.25;
+		}
+	}
+
 	p.prompt 
 	{
 		text-align: center;

@@ -9,8 +9,11 @@
 	<button ng-if="mode == 'download' &amp;&amp; !downloadLink &amp;&amp; !saving" ng-click="generateDownload()">Generate PDF</button>
 	<a ng-if="mode == 'download' &amp;&amp; downloadLink &amp;&amp; !saving" ng-href="{{downloadLink}}">Download Your Bingo Package!</a>
 	<p class="prompt" ng-if="mode == 'download' &amp;&amp; downloadLink &amp;&amp; !saving">Your Bingo bundle will persist at the URL above. Please bookmark it for safekeeping.</p>
-	
-	<button ng-if="free &amp;&amp; !downloadLink &amp;&amp; !saving" ng-click="generatePDF()">Generate PDF</button>
+	<form name="reg" ng-if="free &amp;&amp; !downloadLink &amp;&amp; !saving">
+		<label for="generation-email">Please provide your email address to activate your free download.</label>
+		<input id="generation-email" type="email" name="email" ng-pattern="emailRegExp" ng-model="registration.email" required>
+		<button ng-disabled="reg.$error.email || !reg.$valid" ng-click="generatePDF(free)">Generate PDF</button>
+	</form>
 	<a ng-if="free &amp;&amp; downloadLink &amp;&amp; !saving" ng-href="{{downloadLink}}">Download Your Bingo Package!</a>
 	<p class="prompt" ng-if="free &amp;&amp; downloadLink &amp;&amp; !saving">Your Bingo bundle will persist at the URL above. Please bookmark it for safekeeping.</p>
 

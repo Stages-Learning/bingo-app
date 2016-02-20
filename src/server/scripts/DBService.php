@@ -12,6 +12,7 @@
 	$labels = mysqli_real_escape_string($conn,$content->{'labels'});
 	$cards = $content->{'cards'};
 	$pool = $content->{'pool'};
+	$email = $content->email;
 	$hash = mysqli_real_escape_string($conn,$content->{'hash'});
 	$result = new stdClass();
 
@@ -33,6 +34,8 @@
 	function save($category,$rows,$cols,$cards,$pool,$labels,$hash)
 	{
 		global $conn;
+		global $email;
+
 		$encodedPool = stripslashes(json_encode($pool));
 		$query = "INSERT INTO games (userhash,category,`cols`,`rows`,labels,config) VALUES (?,?,?,?,?,?)";
 		$stmt = $conn->prepare($query);
@@ -47,6 +50,15 @@
 			$stmt = $conn->prepare($query);
 			$encoded = stripslashes(json_encode($card));
 			$stmt->bind_param('is',$id,$encoded);
+			$stmt->execute();
+			$stmt->close();
+		}
+
+		if($email)
+		{
+			$query = "INSERT INTO registrations (email,gameid) VALUES (?,?)";
+			$stmt = $conn->prepare($query);
+			$stmt->bind_param('si',$email,$id);
 			$stmt->execute();
 			$stmt->close();
 		}

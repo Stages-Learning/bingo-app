@@ -14,6 +14,7 @@ angular.module('bingo')
     $scope.selectedCount = 0;
     $scope.selectedMax = 25;
     $scope.numCards = 4;
+    $scope.registration = {email:null};
     $scope.labelManagement = "auto";
     $scope.mode = typeof __HASH__ !== "undefined" ? "download" : "creation";
 
@@ -119,7 +120,7 @@ angular.module('bingo')
       deselect(true);
     };
 
-    $scope.generatePDF = function(){
+    $scope.generatePDF = function(free){
       var cards = [];
       generateMasterPool();
       for(var i = 0; i < $scope.numCards; i++)
@@ -127,7 +128,8 @@ angular.module('bingo')
         cards.push(generateCard());
       }
       $scope.saving = true;
-      DBService.saveGame($scope.currentConfiguration.pack,$scope.currentConfiguration.rows,$scope.currentConfiguration.cols,$scope.labelManagement !== "none" ? "true":"false",cards,$scope.masterPool).then(renderDownloadButton);
+
+      DBService.saveGame($scope.currentConfiguration.pack,$scope.currentConfiguration.rows,$scope.currentConfiguration.cols,$scope.labelManagement !== "none" ? "true":"false",cards,$scope.masterPool,$scope.registration.email).then(renderDownloadButton);
     };
 
     $scope.generateDownload = function()

@@ -12,12 +12,15 @@ angular.module('bingo').service('DBService', function($http,$window)
 
 	}
 
-	function saveGame(category,rows,cols,labels,cards,pool)
+	function saveGame(category,rows,cols,labels,cards,pool,email)
 	{
 		hash = generateHash();
 		cardNumber = cards.length;
 		pack = category.toUpperCase();
-		return $http.post('php/scripts/DBService.php', {request:"save",hash:hash,category:category.toLowerCase(),rows:rows,cols:cols,labels:labels,cards:cards,pool:pool}).success(onSaveComplete);
+		var payload = {request:"save",hash:hash,category:category.toLowerCase(),rows:rows,cols:cols,labels:labels,cards:cards,pool:pool};
+		if(email) payload.email = email;
+
+		return $http.post('php/scripts/DBService.php', payload).success(onSaveComplete);
 	}
 	function generateDownload(hash)
 	{
