@@ -34,7 +34,6 @@ angular.module('bingo')
     };
     $scope.setCurrentPage = function(index)
     {
-      $window.parent.postMessage({scrollTo:0},"*");
       $window.scrollTo(0, 0);
     	$scope.currentPageIndex = index;
     };
