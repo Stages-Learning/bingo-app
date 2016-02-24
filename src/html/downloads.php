@@ -7,7 +7,7 @@
 		var __HASH__ = "<?php print $_GET['hash'];?>";
 	</script>
 	<div id="app-container" ng-app="bingo" ng-controller="BingoController" ng-class="appStyles">
-		<section id="generation" class="page" aria-hidden="{{currentPageIndex == 0 ? 'false':'true'}}" generation-view></section>
+		<section id="generation" class="page" aria-hidden="{{currentPageIndex == 0 ? 'false':'true'}}" generation-view screen></section>
 	</div>
 	
 	<script type="text/javascript" src="js/vendor/angular.min.js"></script>
