@@ -10,9 +10,9 @@
 		<section id="generation" class="page" aria-hidden="{{currentPageIndex == 0 ? 'false':'true'}}" generation-view screen></section>
 	</div>
 	
+	<script type="text/javascript" src="js/vendor/jquery.min.js"></script>
 	<script type="text/javascript" src="js/vendor/angular.min.js"></script>
 	<script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
-	<script type="text/javascript" src="js/vendor/jquery.min.js"></script>
 
 	<script type="text/javascript" src="js/app/app.js"></script>
 	<script type="text/javascript" src="js/app/controllers/BingoController.js"></script>
