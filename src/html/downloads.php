@@ -21,6 +21,7 @@
 	<script type="text/javascript" src="js/app/directives/BoardSelectionDirective.js"></script>
 	<script type="text/javascript" src="js/app/directives/ImageSelectionDirective.js"></script>
 	<script type="text/javascript" src="js/app/directives/GenerationViewDirective.js"></script>
+	<script type="text/javascript" src="js/app/directives/ScreenDirective.js"></script>
 	<script type="text/javascript" src="js/app/filters/TechLanguageFilter.js"></script>
 	<script type="text/javascript" src="js/app/filters/PackFilter.js"></script>
 	<script type="text/javascript" src="js/app/filters/LabelFilter.js"></script>
