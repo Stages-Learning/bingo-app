@@ -157,7 +157,10 @@ angular.module('bingo')
       for(var id in $scope.selectedImages)
       {
         var image = $scope.lookup[id];
-        $scope.masterPool.push({label:image.label,src:image.path});
+        var label = image.label;
+        if($scope.labelManagement === "auto-sp") label = image.sp;
+        if($scope.labelManagement === "auto-fr") label = image.fr;
+        $scope.masterPool.push({label:label,src:image.path});
       }
     }
 
@@ -172,6 +175,7 @@ angular.module('bingo')
        var numImages = $scope.currentConfiguration.rows * $scope.currentConfiguration.cols;
        var image = pool[Math.floor(Math.random()*pool.length)];
        card.push(image);
+
        if(card.length < numImages) addImageToCard(card);
        return card;
     }

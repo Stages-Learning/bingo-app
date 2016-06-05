@@ -15,6 +15,14 @@
 		<label for="auto-labels">Include auto-generated English labels</label>
 	</div>
 	<div class="formrow">
+		<input id="auto-labels-sp" type="radio" name="labels" ng-model="labelManagement" value="auto-sp" />
+		<label for="auto-labels">Include auto-generated Spanish labels</label>
+	</div>
+	<div class="formrow">
+		<input id="auto-labels-fr" type="radio" name="labels" ng-model="labelManagement" value="auto-fr" />
+		<label for="auto-labels">Include auto-generated French labels</label>
+	</div>
+	<div class="formrow">
 		<input id="custom-labels" type="radio" name="labels" ng-model="labelManagement" value="custom"  />
 		<label for="custom-labels">Generate your own picture labels</label>
 	</div>
@@ -35,6 +43,8 @@
 		<label ng-class="selectedCount >= selectedMax &amp;&amp; !image.selected ? 'disabled':''" for="image-{{image.id}}">
 			<img ng-src="{{image.path}}" alt="{{image.label}}">
 			<span ng-if="labelManagement == 'auto'" class="label" ng-bind-html="image.originalLabel"></span>
+			<span ng-if="labelManagement == 'auto-sp'" class="label" ng-bind-html="image.sp"></span>
+			<span ng-if="labelManagement == 'auto-fr'" class="label" ng-bind-html="image.fr"></span>
 		</label>
 		<input id="label-input-{{$index}}" type="text" ng-if="labelManagement == 'custom'" ng-model="image.label" ng-disabled="selectedCount >= selectedMax &amp;&amp; !image.selected" ng-keyup="onEnter($event,$index);" />
 	</div>

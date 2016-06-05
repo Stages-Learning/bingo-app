@@ -8,6 +8,7 @@ angular.module('bingo').service('ImageService', function($http,$filter)
 
 	function load()
 	{
+		trace("loading")
 		return $http.post('php/scripts/ImageService.php', {request:"listing"}).success(onImagesLoaded);
 	}
 
