@@ -3,11 +3,12 @@
 	<title>Stages Bingo Creator</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link href="css/bingo.min.css" rel="stylesheet" type="text/css"/>
+	<!--
 	<div>
 		<h1>We are working to add new image packs!</h1>
 		<p>The bingo generator will be online again shortly.</p>
 	</div>
-	<!--
+	-->
 	<div id="app-container" ng-app="bingo" ng-controller="BingoController" ng-class="appStyles">
 		<section id="landing-page" class="page" aria-hidden="{{currentPageIndex == 0 ? 'false':'true'}}" landing-view screen></section>
 		<section id="category-selection" class="page" aria-hidden="{{currentPageIndex == 1 ? 'false':'true'}}" category-selection screen></section>
@@ -37,6 +38,4 @@
 	<script type="text/javascript" src="js/app/filters/EligibleFilter.js"></script>
 	<script type="text/javascript" src="js/app/services/DBService.js"></script>
 	<script type="text/javascript" src="js/app/services/ImageService.js"></script>
-	-->
-
 </html>
