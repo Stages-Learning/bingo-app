@@ -51,7 +51,8 @@
 		{
 			$query = "INSERT INTO cards (gameID,config) VALUES (?,?)";
 			$stmt = $conn->prepare($query);
-			$encoded = stripslashes(json_encode($card));
+			$card = Encoding::toUTF8($card);
+			$encoded = json_encode($card);
 			$stmt->bind_param('is',$id,$encoded);
 			$stmt->execute();
 			$stmt->close();

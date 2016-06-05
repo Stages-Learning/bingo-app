@@ -5,6 +5,10 @@
 		
 		<?php
 		include "php/config/config.php";
+		include "php/scripts/Encoding.php";
+
+		use \ForceUTF8\Encoding;
+
 		$conn = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD,BINGO_DB);
 		
 		$hash = $_GET['userhash'];
@@ -35,7 +39,7 @@
 		$info = $cards[0];
 		$rows = $info->rows;
 		$cols = $info->cols;
-		$game = $info->label;
+		$game = str_replace(" ", "-", $info->label);
 		$list = $info->config;
 		$useLabels = $info->useLabels;
 
