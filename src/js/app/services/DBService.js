@@ -17,6 +17,8 @@ angular.module('bingo').service('DBService', function($http,$window)
 		hash = generateHash();
 		cardNumber = cards.length;
 		pack = category.toUpperCase();
+		pack = pack.replace(/\s+/gim,"-");
+		trace("sending pack: " + pack);
 		var payload = {request:"save",hash:hash,category:category.toLowerCase(),rows:rows,cols:cols,labels:labels,cards:cards,pool:pool};
 		if(email) payload.email = email;
 
