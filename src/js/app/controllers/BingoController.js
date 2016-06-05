@@ -128,6 +128,8 @@ angular.module('bingo')
       }
       $scope.saving = true;
 
+      trace("saving game");
+
       DBService.saveGame($scope.currentConfiguration.pack,$scope.currentConfiguration.rows,$scope.currentConfiguration.cols,$scope.labelManagement !== "none" ? "true":"false",cards,$scope.masterPool,$scope.registration.email).then(renderDownloadButton);
     };
 

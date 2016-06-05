@@ -30,6 +30,7 @@ angular.module('bingo').service('DBService', function($http,$window)
 	function onSaveComplete(data)
 	{
 		//link = data.url;
+		trace("posting save message");
 		$window.parent.postMessage({quantity:cardNumber,pack:pack,hash:hash},"*");
 	}
 	function onDownloadComplete(data)
