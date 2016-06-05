@@ -1,6 +1,9 @@
 <?php
 	session_start();
 	include "../config/config.php";
+	include "Encoding.php";
+
+	use \ForceUTF8\Encoding;
 
 	$conn = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD,BINGO_DB);
 	$content = file_get_contents('php://input');
@@ -35,8 +38,8 @@
 	{
 		global $conn;
 		global $email;
-
-		$encodedPool = stripslashes(json_encode($pool));
+		$pool = Encoding::toUTF8($pool);
+		$encodedPool =  json_encode($pool); //stripslashes(json_encode($pool));
 		$query = "INSERT INTO games (userhash,category,`cols`,`rows`,labels,config) VALUES (?,?,?,?,?,?)";
 		$stmt = $conn->prepare($query);
 		$stmt->bind_param('ssiiss',$hash,$category,$cols,$rows,$labels,$encodedPool);

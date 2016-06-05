@@ -18,10 +18,8 @@ angular.module('bingo').service('DBService', function($http,$window)
 		cardNumber = cards.length;
 		pack = category.toUpperCase();
 		pack = pack.replace(/\s+/gim,"-");
-		trace("sending pack: " + pack);
 		var payload = {request:"save",hash:hash,category:category.toLowerCase(),rows:rows,cols:cols,labels:labels,cards:cards,pool:pool};
 		if(email) payload.email = email;
-
 		return $http.post('php/scripts/DBService.php', payload).success(onSaveComplete);
 	}
 	function generateDownload(hash)
@@ -31,8 +29,6 @@ angular.module('bingo').service('DBService', function($http,$window)
 
 	function onSaveComplete(data)
 	{
-		//link = data.url;
-		trace("posting save message");
 		$window.parent.postMessage({quantity:cardNumber,pack:pack,hash:hash},"*");
 	}
 	function onDownloadComplete(data)
