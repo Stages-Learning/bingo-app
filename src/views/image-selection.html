@@ -42,9 +42,9 @@
 		<input id="image-{{image.id}}" type="checkbox" ng-model="selectedImages['image-'+image.id]" ng-change="updateImageList()" value="{{image.id}}" name="image-selection" ng-disabled="selectedCount >= selectedMax &amp;&amp; !image.selected">
 		<label ng-class="selectedCount >= selectedMax &amp;&amp; !image.selected ? 'disabled':''" for="image-{{image.id}}">
 			<img ng-src="{{image.path}}" alt="{{image.label}}">
-			<span ng-if="labelManagement == 'auto'" class="label" ng-bind-html="image.originalLabel"></span>
-			<span ng-if="labelManagement == 'auto-sp'" class="label" ng-bind-html="image.sp"></span>
-			<span ng-if="labelManagement == 'auto-fr'" class="label" ng-bind-html="image.fr"></span>
+			<span ng-if="labelManagement == 'auto'" class="label" ng-bind-html="image.originalLabel.toLowerCase()"></span>
+			<span ng-if="labelManagement == 'auto-sp'" class="label" ng-bind-html="image.sp.toLowerCase()"></span>
+			<span ng-if="labelManagement == 'auto-fr'" class="label" ng-bind-html="image.fr.toLowerCase()"></span>
 		</label>
 		<input id="label-input-{{$index}}" type="text" ng-if="labelManagement == 'custom'" ng-model="image.label" ng-disabled="selectedCount >= selectedMax &amp;&amp; !image.selected" ng-keyup="onEnter($event,$index);" />
 	</div>
